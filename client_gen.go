@@ -8,20 +8,19 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	"github.com/ybbus/jsonrpc/v3"
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
 
 type Client struct {
-	rpc *xmlrpc.Client
+	rpc jsonrpc.RPCClient
 	Session SessionClass
 	Auth AuthClass
 	Subject SubjectClass
@@ -91,7 +90,7 @@ type Client struct {
 	Observer ObserverClass
 }
 
-func prepClient(rpc *xmlrpc.Client) *Client {
+func prepClient(rpc jsonrpc.RPCClient) *Client {
 	var client Client
 	client.rpc = rpc
 	client.Session = SessionClass{&client}

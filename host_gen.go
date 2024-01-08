@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -218,7 +217,7 @@ func (_class HostClass) GetAllRecords(sessionID SessionRef) (_retval map[HostRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefToHostRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefToHostRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -233,7 +232,7 @@ func (_class HostClass) GetAll(sessionID SessionRef) (_retval []HostRef, _err er
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -275,7 +274,7 @@ func (_class HostClass) ApplyUpdates(sessionID SessionRef, self HostRef, hash st
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -316,7 +315,7 @@ func (_class HostClass) GetSchedGran(sessionID SessionRef, self HostRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumHostSchedGranToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumHostSchedGranToGo(_method + " -> ", _result)
 	return
 }
 
@@ -430,7 +429,7 @@ func (_class HostClass) DisableDisplay(sessionID SessionRef, host HostRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumHostDisplayToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumHostDisplayToGo(_method + " -> ", _result)
 	return
 }
 
@@ -449,7 +448,7 @@ func (_class HostClass) EnableDisplay(sessionID SessionRef, host HostRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumHostDisplayToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumHostDisplayToGo(_method + " -> ", _result)
 	return
 }
 
@@ -491,7 +490,7 @@ func (_class HostClass) MigrateReceive(sessionID SessionRef, host HostRef, netwo
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -707,7 +706,7 @@ func (_class HostClass) GetServerCertificate(sessionID SessionRef, host HostRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -726,7 +725,7 @@ func (_class HostClass) RetrieveWlbEvacuateRecommendations(sessionID SessionRef,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToStringSetMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToStringSetMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -791,7 +790,7 @@ func (_class HostClass) GetServerLocaltime(sessionID SessionRef, host HostRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTimeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTimeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -810,7 +809,7 @@ func (_class HostClass) GetServertime(sessionID SessionRef, host HostRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTimeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTimeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -833,7 +832,7 @@ func (_class HostClass) CallExtension(sessionID SessionRef, host HostRef, call s
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -856,7 +855,7 @@ func (_class HostClass) HasExtension(sessionID SessionRef, host HostRef, name st
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -887,7 +886,7 @@ func (_class HostClass) CallPlugin(sessionID SessionRef, host HostRef, plugin st
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -918,7 +917,7 @@ func (_class HostClass) CreateNewBlob(sessionID SessionRef, host HostRef, name s
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBlobRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBlobRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -971,7 +970,7 @@ func (_class HostClass) ComputeMemoryOverhead(sessionID SessionRef, host HostRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -990,7 +989,7 @@ func (_class HostClass) ComputeFreeMemory(sessionID SessionRef, host HostRef) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1057,7 +1056,7 @@ func (_class HostClass) GetSystemStatusCapabilities(sessionID SessionRef, host H
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1076,7 +1075,7 @@ func (_class HostClass) GetManagementInterface(sessionID SessionRef, host HostRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPIFRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPIFRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1170,7 +1169,7 @@ func (_class HostClass) GetUncooperativeResidentVMs(sessionID SessionRef, self H
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1189,7 +1188,7 @@ func (_class HostClass) GetVmsWhichPreventEvacuation(sessionID SessionRef, self 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToStringSetMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToStringSetMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1246,7 +1245,7 @@ func (_class HostClass) QueryDataSource(sessionID SessionRef, host HostRef, data
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFloatToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFloatToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1284,7 +1283,7 @@ func (_class HostClass) GetDataSources(sessionID SessionRef, host HostRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertDataSourceRecordSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertDataSourceRecordSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1403,7 +1402,7 @@ func (_class HostClass) ListMethods(sessionID SessionRef) (_retval []string, _er
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1464,7 +1463,7 @@ func (_class HostClass) GetLog(sessionID SessionRef, host HostRef) (_retval stri
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1483,7 +1482,7 @@ func (_class HostClass) DmesgClear(sessionID SessionRef, host HostRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1502,7 +1501,7 @@ func (_class HostClass) Dmesg(sessionID SessionRef, host HostRef) (_retval strin
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2015,7 +2014,7 @@ func (_class HostClass) GetHTTPSOnly(sessionID SessionRef, self HostRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2034,7 +2033,7 @@ func (_class HostClass) GetLastSoftwareUpdate(sessionID SessionRef, self HostRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTimeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTimeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2053,7 +2052,7 @@ func (_class HostClass) GetTLSVerificationEnabled(sessionID SessionRef, self Hos
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2072,7 +2071,7 @@ func (_class HostClass) GetPendingGuidances(sessionID SessionRef, self HostRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumUpdateGuidancesSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumUpdateGuidancesSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2091,7 +2090,7 @@ func (_class HostClass) GetEditions(sessionID SessionRef, self HostRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2110,7 +2109,7 @@ func (_class HostClass) GetCertificates(sessionID SessionRef, self HostRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertCertificateRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertCertificateRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2129,7 +2128,7 @@ func (_class HostClass) GetUefiCertificates(sessionID SessionRef, self HostRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2148,7 +2147,7 @@ func (_class HostClass) GetMultipathing(sessionID SessionRef, self HostRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2167,7 +2166,7 @@ func (_class HostClass) GetIscsiIqn(sessionID SessionRef, self HostRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2186,7 +2185,7 @@ func (_class HostClass) GetFeatures(sessionID SessionRef, self HostRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFeatureRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFeatureRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2205,7 +2204,7 @@ func (_class HostClass) GetUpdatesRequiringReboot(sessionID SessionRef, self Hos
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPoolUpdateRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPoolUpdateRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2224,7 +2223,7 @@ func (_class HostClass) GetControlDomain(sessionID SessionRef, self HostRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2243,7 +2242,7 @@ func (_class HostClass) GetVirtualHardwarePlatformVersions(sessionID SessionRef,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2262,7 +2261,7 @@ func (_class HostClass) GetDisplay(sessionID SessionRef, self HostRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumHostDisplayToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumHostDisplayToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2281,7 +2280,7 @@ func (_class HostClass) GetGuestVCPUsParams(sessionID SessionRef, self HostRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2300,7 +2299,7 @@ func (_class HostClass) GetSslLegacy(sessionID SessionRef, self HostRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2319,7 +2318,7 @@ func (_class HostClass) GetPUSBs(sessionID SessionRef, self HostRef) (_retval []
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPUSBRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPUSBRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2338,7 +2337,7 @@ func (_class HostClass) GetPGPUs(sessionID SessionRef, self HostRef) (_retval []
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPGPURefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPGPURefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2357,7 +2356,7 @@ func (_class HostClass) GetPCIs(sessionID SessionRef, self HostRef) (_retval []P
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPCIRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPCIRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2376,7 +2375,7 @@ func (_class HostClass) GetChipsetInfo(sessionID SessionRef, self HostRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2395,7 +2394,7 @@ func (_class HostClass) GetLocalCacheSr(sessionID SessionRef, self HostRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2414,7 +2413,7 @@ func (_class HostClass) GetPowerOnConfig(sessionID SessionRef, self HostRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2433,7 +2432,7 @@ func (_class HostClass) GetPowerOnMode(sessionID SessionRef, self HostRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2452,7 +2451,7 @@ func (_class HostClass) GetBiosStrings(sessionID SessionRef, self HostRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2471,7 +2470,7 @@ func (_class HostClass) GetLicenseServer(sessionID SessionRef, self HostRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2490,7 +2489,7 @@ func (_class HostClass) GetEdition(sessionID SessionRef, self HostRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2509,7 +2508,7 @@ func (_class HostClass) GetExternalAuthConfiguration(sessionID SessionRef, self 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2528,7 +2527,7 @@ func (_class HostClass) GetExternalAuthServiceName(sessionID SessionRef, self Ho
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2547,7 +2546,7 @@ func (_class HostClass) GetExternalAuthType(sessionID SessionRef, self HostRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2566,7 +2565,7 @@ func (_class HostClass) GetTags(sessionID SessionRef, self HostRef) (_retval []s
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2585,7 +2584,7 @@ func (_class HostClass) GetBlobs(sessionID SessionRef, self HostRef) (_retval ma
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToBlobRefMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToBlobRefMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2604,7 +2603,7 @@ func (_class HostClass) GetHaNetworkPeers(sessionID SessionRef, self HostRef) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2623,7 +2622,7 @@ func (_class HostClass) GetHaStatefiles(sessionID SessionRef, self HostRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2642,7 +2641,7 @@ func (_class HostClass) GetLicenseParams(sessionID SessionRef, self HostRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2661,7 +2660,7 @@ func (_class HostClass) GetMetrics(sessionID SessionRef, self HostRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostMetricsRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostMetricsRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2680,7 +2679,7 @@ func (_class HostClass) GetAddress(sessionID SessionRef, self HostRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2699,7 +2698,7 @@ func (_class HostClass) GetHostname(sessionID SessionRef, self HostRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2718,7 +2717,7 @@ func (_class HostClass) GetCPUInfo(sessionID SessionRef, self HostRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2737,7 +2736,7 @@ func (_class HostClass) GetHostCPUs(sessionID SessionRef, self HostRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostCPURefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostCPURefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2756,7 +2755,7 @@ func (_class HostClass) GetPBDs(sessionID SessionRef, self HostRef) (_retval []P
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPBDRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPBDRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2775,7 +2774,7 @@ func (_class HostClass) GetUpdates(sessionID SessionRef, self HostRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPoolUpdateRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPoolUpdateRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2794,7 +2793,7 @@ func (_class HostClass) GetPatches(sessionID SessionRef, self HostRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostPatchRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostPatchRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2813,7 +2812,7 @@ func (_class HostClass) GetCrashdumps(sessionID SessionRef, self HostRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostCrashdumpRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostCrashdumpRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2832,7 +2831,7 @@ func (_class HostClass) GetCrashDumpSr(sessionID SessionRef, self HostRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2851,7 +2850,7 @@ func (_class HostClass) GetSuspendImageSr(sessionID SessionRef, self HostRef) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2870,7 +2869,7 @@ func (_class HostClass) GetPIFs(sessionID SessionRef, self HostRef) (_retval []P
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPIFRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPIFRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2889,7 +2888,7 @@ func (_class HostClass) GetLogging(sessionID SessionRef, self HostRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2908,7 +2907,7 @@ func (_class HostClass) GetResidentVMs(sessionID SessionRef, self HostRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2927,7 +2926,7 @@ func (_class HostClass) GetSupportedBootloaders(sessionID SessionRef, self HostR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2946,7 +2945,7 @@ func (_class HostClass) GetSchedPolicy(sessionID SessionRef, self HostRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2965,7 +2964,7 @@ func (_class HostClass) GetCPUConfiguration(sessionID SessionRef, self HostRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2984,7 +2983,7 @@ func (_class HostClass) GetCapabilities(sessionID SessionRef, self HostRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3003,7 +3002,7 @@ func (_class HostClass) GetOtherConfig(sessionID SessionRef, self HostRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3022,7 +3021,7 @@ func (_class HostClass) GetSoftwareVersion(sessionID SessionRef, self HostRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3041,7 +3040,7 @@ func (_class HostClass) GetEnabled(sessionID SessionRef, self HostRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3060,7 +3059,7 @@ func (_class HostClass) GetAPIVersionVendorImplementation(sessionID SessionRef, 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3079,7 +3078,7 @@ func (_class HostClass) GetAPIVersionVendor(sessionID SessionRef, self HostRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3098,7 +3097,7 @@ func (_class HostClass) GetAPIVersionMinor(sessionID SessionRef, self HostRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3117,7 +3116,7 @@ func (_class HostClass) GetAPIVersionMajor(sessionID SessionRef, self HostRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3136,7 +3135,7 @@ func (_class HostClass) GetCurrentOperations(sessionID SessionRef, self HostRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToEnumHostAllowedOperationsMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToEnumHostAllowedOperationsMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3155,7 +3154,7 @@ func (_class HostClass) GetAllowedOperations(sessionID SessionRef, self HostRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumHostAllowedOperationsSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumHostAllowedOperationsSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3174,7 +3173,7 @@ func (_class HostClass) GetMemoryOverhead(sessionID SessionRef, self HostRef) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3193,7 +3192,7 @@ func (_class HostClass) GetNameDescription(sessionID SessionRef, self HostRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3212,7 +3211,7 @@ func (_class HostClass) GetNameLabel(sessionID SessionRef, self HostRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3231,7 +3230,7 @@ func (_class HostClass) GetUUID(sessionID SessionRef, self HostRef) (_retval str
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3250,7 +3249,7 @@ func (_class HostClass) GetByNameLabel(sessionID SessionRef, label string) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3269,7 +3268,7 @@ func (_class HostClass) GetByUUID(sessionID SessionRef, uuid string) (_retval Ho
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3288,6 +3287,6 @@ func (_class HostClass) GetRecord(sessionID SessionRef, self HostRef) (_retval H
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRecordToGo(_method + " -> ", _result)
 	return
 }

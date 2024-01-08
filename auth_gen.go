@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -42,7 +41,7 @@ func (_class AuthClass) GetGroupMembership(sessionID SessionRef, subjectIdentifi
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -61,7 +60,7 @@ func (_class AuthClass) GetSubjectInformationFromIdentifier(sessionID SessionRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -80,6 +79,6 @@ func (_class AuthClass) GetSubjectIdentifier(sessionID SessionRef, subjectName s
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }

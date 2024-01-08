@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -53,7 +52,7 @@ func (_class PVSCacheStorageClass) GetAllRecords(sessionID SessionRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSCacheStorageRefToPVSCacheStorageRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSCacheStorageRefToPVSCacheStorageRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -68,7 +67,7 @@ func (_class PVSCacheStorageClass) GetAll(sessionID SessionRef) (_retval []PVSCa
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSCacheStorageRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSCacheStorageRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -87,7 +86,7 @@ func (_class PVSCacheStorageClass) GetVDI(sessionID SessionRef, self PVSCacheSto
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -106,7 +105,7 @@ func (_class PVSCacheStorageClass) GetSize(sessionID SessionRef, self PVSCacheSt
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -125,7 +124,7 @@ func (_class PVSCacheStorageClass) GetSite(sessionID SessionRef, self PVSCacheSt
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSSiteRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSSiteRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -144,7 +143,7 @@ func (_class PVSCacheStorageClass) GetSR(sessionID SessionRef, self PVSCacheStor
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -163,7 +162,7 @@ func (_class PVSCacheStorageClass) GetHost(sessionID SessionRef, self PVSCacheSt
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -182,7 +181,7 @@ func (_class PVSCacheStorageClass) GetUUID(sessionID SessionRef, self PVSCacheSt
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -216,7 +215,7 @@ func (_class PVSCacheStorageClass) Create(sessionID SessionRef, args PVSCacheSto
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSCacheStorageRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSCacheStorageRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -235,7 +234,7 @@ func (_class PVSCacheStorageClass) GetByUUID(sessionID SessionRef, uuid string) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSCacheStorageRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSCacheStorageRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -254,6 +253,6 @@ func (_class PVSCacheStorageClass) GetRecord(sessionID SessionRef, self PVSCache
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSCacheStorageRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSCacheStorageRecordToGo(_method + " -> ", _result)
 	return
 }

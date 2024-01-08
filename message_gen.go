@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -82,7 +81,7 @@ func (_class MessageClass) GetAllRecordsWhere(sessionID SessionRef, expr string)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertMessageRefToMessageRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertMessageRefToMessageRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -97,7 +96,7 @@ func (_class MessageClass) GetAllRecords(sessionID SessionRef) (_retval map[Mess
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertMessageRefToMessageRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertMessageRefToMessageRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -116,7 +115,7 @@ func (_class MessageClass) GetByUUID(sessionID SessionRef, uuid string) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertMessageRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertMessageRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -135,7 +134,7 @@ func (_class MessageClass) GetRecord(sessionID SessionRef, self MessageRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertMessageRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertMessageRecordToGo(_method + " -> ", _result)
 	return
 }
 
@@ -154,7 +153,7 @@ func (_class MessageClass) GetSince(sessionID SessionRef, since time.Time) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertMessageRefToMessageRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertMessageRefToMessageRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -169,7 +168,7 @@ func (_class MessageClass) GetAll(sessionID SessionRef) (_retval []MessageRef, _
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertMessageRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertMessageRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -196,7 +195,7 @@ func (_class MessageClass) Get(sessionID SessionRef, cls Cls, objUUID string, si
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertMessageRefToMessageRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertMessageRefToMessageRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -261,6 +260,6 @@ func (_class MessageClass) Create(sessionID SessionRef, name string, priority in
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertMessageRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertMessageRefToGo(_method + " -> ", _result)
 	return
 }

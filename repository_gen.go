@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -59,7 +58,7 @@ func (_class RepositoryClass) GetAllRecords(sessionID SessionRef) (_retval map[R
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertRepositoryRefToRepositoryRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertRepositoryRefToRepositoryRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -74,7 +73,7 @@ func (_class RepositoryClass) GetAll(sessionID SessionRef) (_retval []Repository
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertRepositoryRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertRepositoryRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -147,7 +146,7 @@ func (_class RepositoryClass) Introduce(sessionID SessionRef, nameLabel string, 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertRepositoryRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertRepositoryRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -204,7 +203,7 @@ func (_class RepositoryClass) GetGpgkeyPath(sessionID SessionRef, self Repositor
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -223,7 +222,7 @@ func (_class RepositoryClass) GetUpToDate(sessionID SessionRef, self RepositoryR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -242,7 +241,7 @@ func (_class RepositoryClass) GetHash(sessionID SessionRef, self RepositoryRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -261,7 +260,7 @@ func (_class RepositoryClass) GetUpdate(sessionID SessionRef, self RepositoryRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -280,7 +279,7 @@ func (_class RepositoryClass) GetSourceURL(sessionID SessionRef, self Repository
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -299,7 +298,7 @@ func (_class RepositoryClass) GetBinaryURL(sessionID SessionRef, self Repository
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -318,7 +317,7 @@ func (_class RepositoryClass) GetNameDescription(sessionID SessionRef, self Repo
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -337,7 +336,7 @@ func (_class RepositoryClass) GetNameLabel(sessionID SessionRef, self Repository
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -356,7 +355,7 @@ func (_class RepositoryClass) GetUUID(sessionID SessionRef, self RepositoryRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -375,7 +374,7 @@ func (_class RepositoryClass) GetByNameLabel(sessionID SessionRef, label string)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertRepositoryRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertRepositoryRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -394,7 +393,7 @@ func (_class RepositoryClass) GetByUUID(sessionID SessionRef, uuid string) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertRepositoryRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertRepositoryRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -413,6 +412,6 @@ func (_class RepositoryClass) GetRecord(sessionID SessionRef, self RepositoryRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertRepositoryRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertRepositoryRecordToGo(_method + " -> ", _result)
 	return
 }

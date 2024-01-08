@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -128,7 +127,7 @@ func (_class SRClass) GetAllRecords(sessionID SessionRef) (_retval map[SRRef]SRR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefToSRRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefToSRRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -143,7 +142,7 @@ func (_class SRClass) GetAll(sessionID SessionRef) (_retval []SRRef, _err error)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -185,7 +184,7 @@ func (_class SRClass) QueryDataSource(sessionID SessionRef, sr SRRef, dataSource
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFloatToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFloatToGo(_method + " -> ", _result)
 	return
 }
 
@@ -223,7 +222,7 @@ func (_class SRClass) GetDataSources(sessionID SessionRef, sr SRRef) (_retval []
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertDataSourceRecordSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertDataSourceRecordSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -333,7 +332,7 @@ func (_class SRClass) CreateNewBlob(sessionID SessionRef, sr SRRef, name string,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBlobRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBlobRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -421,7 +420,7 @@ func (_class SRClass) ProbeExt(sessionID SessionRef, host HostRef, deviceConfig 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertProbeResultRecordSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertProbeResultRecordSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -452,7 +451,7 @@ func (_class SRClass) Probe(sessionID SessionRef, host HostRef, deviceConfig map
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -482,7 +481,7 @@ func (_class SRClass) GetSupportedTypes(sessionID SessionRef) (_retval []string,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -580,7 +579,7 @@ func (_class SRClass) Make(sessionID SessionRef, host HostRef, deviceConfig map[
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -623,7 +622,7 @@ func (_class SRClass) Introduce(sessionID SessionRef, uuid string, nameLabel str
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -677,7 +676,7 @@ func (_class SRClass) Create(sessionID SessionRef, host HostRef, deviceConfig ma
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -875,7 +874,7 @@ func (_class SRClass) GetIsToolsSr(sessionID SessionRef, self SRRef) (_retval bo
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -894,7 +893,7 @@ func (_class SRClass) GetClustered(sessionID SessionRef, self SRRef) (_retval bo
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -913,7 +912,7 @@ func (_class SRClass) GetIntroducedBy(sessionID SessionRef, self SRRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertDRTaskRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertDRTaskRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -932,7 +931,7 @@ func (_class SRClass) GetLocalCacheEnabled(sessionID SessionRef, self SRRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -951,7 +950,7 @@ func (_class SRClass) GetBlobs(sessionID SessionRef, self SRRef) (_retval map[st
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToBlobRefMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToBlobRefMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -970,7 +969,7 @@ func (_class SRClass) GetSmConfig(sessionID SessionRef, self SRRef) (_retval map
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -989,7 +988,7 @@ func (_class SRClass) GetTags(sessionID SessionRef, self SRRef) (_retval []strin
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1008,7 +1007,7 @@ func (_class SRClass) GetOtherConfig(sessionID SessionRef, self SRRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1027,7 +1026,7 @@ func (_class SRClass) GetShared(sessionID SessionRef, self SRRef) (_retval bool,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1046,7 +1045,7 @@ func (_class SRClass) GetContentType(sessionID SessionRef, self SRRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1065,7 +1064,7 @@ func (_class SRClass) GetType(sessionID SessionRef, self SRRef) (_retval string,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1084,7 +1083,7 @@ func (_class SRClass) GetPhysicalSize(sessionID SessionRef, self SRRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1103,7 +1102,7 @@ func (_class SRClass) GetPhysicalUtilisation(sessionID SessionRef, self SRRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1122,7 +1121,7 @@ func (_class SRClass) GetVirtualAllocation(sessionID SessionRef, self SRRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1141,7 +1140,7 @@ func (_class SRClass) GetPBDs(sessionID SessionRef, self SRRef) (_retval []PBDRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPBDRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPBDRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1160,7 +1159,7 @@ func (_class SRClass) GetVDIs(sessionID SessionRef, self SRRef) (_retval []VDIRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1179,7 +1178,7 @@ func (_class SRClass) GetCurrentOperations(sessionID SessionRef, self SRRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToEnumStorageOperationsMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToEnumStorageOperationsMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1198,7 +1197,7 @@ func (_class SRClass) GetAllowedOperations(sessionID SessionRef, self SRRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumStorageOperationsSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumStorageOperationsSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1217,7 +1216,7 @@ func (_class SRClass) GetNameDescription(sessionID SessionRef, self SRRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1236,7 +1235,7 @@ func (_class SRClass) GetNameLabel(sessionID SessionRef, self SRRef) (_retval st
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1255,7 +1254,7 @@ func (_class SRClass) GetUUID(sessionID SessionRef, self SRRef) (_retval string,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1274,7 +1273,7 @@ func (_class SRClass) GetByNameLabel(sessionID SessionRef, label string) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1293,7 +1292,7 @@ func (_class SRClass) GetByUUID(sessionID SessionRef, uuid string) (_retval SRRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1312,6 +1311,6 @@ func (_class SRClass) GetRecord(sessionID SessionRef, self SRRef) (_retval SRRec
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRecordToGo(_method + " -> ", _result)
 	return
 }

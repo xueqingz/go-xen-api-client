@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -70,7 +69,7 @@ func (_class GPUGroupClass) GetAllRecords(sessionID SessionRef) (_retval map[GPU
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertGPUGroupRefToGPUGroupRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertGPUGroupRefToGPUGroupRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -85,7 +84,7 @@ func (_class GPUGroupClass) GetAll(sessionID SessionRef) (_retval []GPUGroupRef,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertGPUGroupRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertGPUGroupRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -108,7 +107,7 @@ func (_class GPUGroupClass) GetRemainingCapacity(sessionID SessionRef, self GPUG
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -150,7 +149,7 @@ func (_class GPUGroupClass) Create(sessionID SessionRef, nameLabel string, nameD
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertGPUGroupRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertGPUGroupRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -287,7 +286,7 @@ func (_class GPUGroupClass) GetEnabledVGPUTypes(sessionID SessionRef, self GPUGr
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVGPUTypeRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVGPUTypeRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -306,7 +305,7 @@ func (_class GPUGroupClass) GetSupportedVGPUTypes(sessionID SessionRef, self GPU
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVGPUTypeRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVGPUTypeRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -325,7 +324,7 @@ func (_class GPUGroupClass) GetAllocationAlgorithm(sessionID SessionRef, self GP
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumAllocationAlgorithmToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumAllocationAlgorithmToGo(_method + " -> ", _result)
 	return
 }
 
@@ -344,7 +343,7 @@ func (_class GPUGroupClass) GetOtherConfig(sessionID SessionRef, self GPUGroupRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -363,7 +362,7 @@ func (_class GPUGroupClass) GetGPUTypes(sessionID SessionRef, self GPUGroupRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -382,7 +381,7 @@ func (_class GPUGroupClass) GetVGPUs(sessionID SessionRef, self GPUGroupRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVGPURefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVGPURefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -401,7 +400,7 @@ func (_class GPUGroupClass) GetPGPUs(sessionID SessionRef, self GPUGroupRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPGPURefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPGPURefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -420,7 +419,7 @@ func (_class GPUGroupClass) GetNameDescription(sessionID SessionRef, self GPUGro
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -439,7 +438,7 @@ func (_class GPUGroupClass) GetNameLabel(sessionID SessionRef, self GPUGroupRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -458,7 +457,7 @@ func (_class GPUGroupClass) GetUUID(sessionID SessionRef, self GPUGroupRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -477,7 +476,7 @@ func (_class GPUGroupClass) GetByNameLabel(sessionID SessionRef, label string) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertGPUGroupRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertGPUGroupRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -496,7 +495,7 @@ func (_class GPUGroupClass) GetByUUID(sessionID SessionRef, uuid string) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertGPUGroupRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertGPUGroupRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -515,6 +514,6 @@ func (_class GPUGroupClass) GetRecord(sessionID SessionRef, self GPUGroupRef) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertGPUGroupRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertGPUGroupRecordToGo(_method + " -> ", _result)
 	return
 }

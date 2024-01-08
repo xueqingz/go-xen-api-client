@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -51,7 +50,7 @@ func (_class HostCrashdumpClass) GetAllRecords(sessionID SessionRef) (_retval ma
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostCrashdumpRefToHostCrashdumpRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostCrashdumpRefToHostCrashdumpRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -66,7 +65,7 @@ func (_class HostCrashdumpClass) GetAll(sessionID SessionRef) (_retval []HostCra
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostCrashdumpRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostCrashdumpRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -184,7 +183,7 @@ func (_class HostCrashdumpClass) GetOtherConfig(sessionID SessionRef, self HostC
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -203,7 +202,7 @@ func (_class HostCrashdumpClass) GetSize(sessionID SessionRef, self HostCrashdum
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -222,7 +221,7 @@ func (_class HostCrashdumpClass) GetTimestamp(sessionID SessionRef, self HostCra
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTimeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTimeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -241,7 +240,7 @@ func (_class HostCrashdumpClass) GetHost(sessionID SessionRef, self HostCrashdum
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -260,7 +259,7 @@ func (_class HostCrashdumpClass) GetUUID(sessionID SessionRef, self HostCrashdum
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -279,7 +278,7 @@ func (_class HostCrashdumpClass) GetByUUID(sessionID SessionRef, uuid string) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostCrashdumpRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostCrashdumpRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -298,6 +297,6 @@ func (_class HostCrashdumpClass) GetRecord(sessionID SessionRef, self HostCrashd
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostCrashdumpRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostCrashdumpRecordToGo(_method + " -> ", _result)
 	return
 }

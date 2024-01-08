@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -66,7 +65,7 @@ func (_class VUSBClass) GetAllRecords(sessionID SessionRef) (_retval map[VUSBRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVUSBRefToVUSBRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVUSBRefToVUSBRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -81,7 +80,7 @@ func (_class VUSBClass) GetAll(sessionID SessionRef) (_retval []VUSBRef, _err er
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVUSBRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVUSBRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -138,7 +137,7 @@ func (_class VUSBClass) Create(sessionID SessionRef, vm VMRef, usbGroup USBGroup
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVUSBRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVUSBRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -218,7 +217,7 @@ func (_class VUSBClass) GetCurrentlyAttached(sessionID SessionRef, self VUSBRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -237,7 +236,7 @@ func (_class VUSBClass) GetOtherConfig(sessionID SessionRef, self VUSBRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -256,7 +255,7 @@ func (_class VUSBClass) GetUSBGroup(sessionID SessionRef, self VUSBRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertUSBGroupRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertUSBGroupRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -275,7 +274,7 @@ func (_class VUSBClass) GetVM(sessionID SessionRef, self VUSBRef) (_retval VMRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -294,7 +293,7 @@ func (_class VUSBClass) GetCurrentOperations(sessionID SessionRef, self VUSBRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToEnumVusbOperationsMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToEnumVusbOperationsMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -313,7 +312,7 @@ func (_class VUSBClass) GetAllowedOperations(sessionID SessionRef, self VUSBRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumVusbOperationsSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumVusbOperationsSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -332,7 +331,7 @@ func (_class VUSBClass) GetUUID(sessionID SessionRef, self VUSBRef) (_retval str
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -351,7 +350,7 @@ func (_class VUSBClass) GetByUUID(sessionID SessionRef, uuid string) (_retval VU
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVUSBRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVUSBRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -370,6 +369,6 @@ func (_class VUSBClass) GetRecord(sessionID SessionRef, self VUSBRef) (_retval V
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVUSBRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVUSBRecordToGo(_method + " -> ", _result)
 	return
 }

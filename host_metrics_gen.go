@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -53,7 +52,7 @@ func (_class HostMetricsClass) GetAllRecords(sessionID SessionRef) (_retval map[
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostMetricsRefToHostMetricsRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostMetricsRefToHostMetricsRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -68,7 +67,7 @@ func (_class HostMetricsClass) GetAll(sessionID SessionRef) (_retval []HostMetri
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostMetricsRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostMetricsRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -148,7 +147,7 @@ func (_class HostMetricsClass) GetOtherConfig(sessionID SessionRef, self HostMet
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -167,7 +166,7 @@ func (_class HostMetricsClass) GetLastUpdated(sessionID SessionRef, self HostMet
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTimeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTimeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -186,7 +185,7 @@ func (_class HostMetricsClass) GetLive(sessionID SessionRef, self HostMetricsRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -205,7 +204,7 @@ func (_class HostMetricsClass) GetMemoryFree(sessionID SessionRef, self HostMetr
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -224,7 +223,7 @@ func (_class HostMetricsClass) GetMemoryTotal(sessionID SessionRef, self HostMet
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -243,7 +242,7 @@ func (_class HostMetricsClass) GetUUID(sessionID SessionRef, self HostMetricsRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -262,7 +261,7 @@ func (_class HostMetricsClass) GetByUUID(sessionID SessionRef, uuid string) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostMetricsRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostMetricsRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -281,6 +280,6 @@ func (_class HostMetricsClass) GetRecord(sessionID SessionRef, self HostMetricsR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostMetricsRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostMetricsRecordToGo(_method + " -> ", _result)
 	return
 }

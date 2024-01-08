@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -47,7 +46,7 @@ func (_class SecretClass) GetAllRecords(sessionID SessionRef) (_retval map[Secre
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSecretRefToSecretRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSecretRefToSecretRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -62,7 +61,7 @@ func (_class SecretClass) GetAll(sessionID SessionRef) (_retval []SecretRef, _er
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSecretRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSecretRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -161,7 +160,7 @@ func (_class SecretClass) GetOtherConfig(sessionID SessionRef, self SecretRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -180,7 +179,7 @@ func (_class SecretClass) GetValue(sessionID SessionRef, self SecretRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -199,7 +198,7 @@ func (_class SecretClass) GetUUID(sessionID SessionRef, self SecretRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -233,7 +232,7 @@ func (_class SecretClass) Create(sessionID SessionRef, args SecretRecord) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSecretRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSecretRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -252,7 +251,7 @@ func (_class SecretClass) GetByUUID(sessionID SessionRef, uuid string) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSecretRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSecretRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -271,6 +270,6 @@ func (_class SecretClass) GetRecord(sessionID SessionRef, self SecretRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSecretRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSecretRecordToGo(_method + " -> ", _result)
 	return
 }

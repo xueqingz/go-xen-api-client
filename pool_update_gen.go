@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -87,7 +86,7 @@ func (_class PoolUpdateClass) GetAllRecords(sessionID SessionRef) (_retval map[P
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPoolUpdateRefToPoolUpdateRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPoolUpdateRefToPoolUpdateRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -102,7 +101,7 @@ func (_class PoolUpdateClass) GetAll(sessionID SessionRef) (_retval []PoolUpdate
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPoolUpdateRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPoolUpdateRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -189,7 +188,7 @@ func (_class PoolUpdateClass) Precheck(sessionID SessionRef, self PoolUpdateRef,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumLivepatchStatusToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumLivepatchStatusToGo(_method + " -> ", _result)
 	return
 }
 
@@ -208,7 +207,7 @@ func (_class PoolUpdateClass) Introduce(sessionID SessionRef, vdi VDIRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPoolUpdateRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPoolUpdateRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -288,7 +287,7 @@ func (_class PoolUpdateClass) GetEnforceHomogeneity(sessionID SessionRef, self P
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -307,7 +306,7 @@ func (_class PoolUpdateClass) GetOtherConfig(sessionID SessionRef, self PoolUpda
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -326,7 +325,7 @@ func (_class PoolUpdateClass) GetHosts(sessionID SessionRef, self PoolUpdateRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -345,7 +344,7 @@ func (_class PoolUpdateClass) GetVdi(sessionID SessionRef, self PoolUpdateRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -364,7 +363,7 @@ func (_class PoolUpdateClass) GetAfterApplyGuidance(sessionID SessionRef, self P
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumUpdateAfterApplyGuidanceSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumUpdateAfterApplyGuidanceSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -383,7 +382,7 @@ func (_class PoolUpdateClass) GetKey(sessionID SessionRef, self PoolUpdateRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -402,7 +401,7 @@ func (_class PoolUpdateClass) GetInstallationSize(sessionID SessionRef, self Poo
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -421,7 +420,7 @@ func (_class PoolUpdateClass) GetVersion(sessionID SessionRef, self PoolUpdateRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -440,7 +439,7 @@ func (_class PoolUpdateClass) GetNameDescription(sessionID SessionRef, self Pool
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -459,7 +458,7 @@ func (_class PoolUpdateClass) GetNameLabel(sessionID SessionRef, self PoolUpdate
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -478,7 +477,7 @@ func (_class PoolUpdateClass) GetUUID(sessionID SessionRef, self PoolUpdateRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -497,7 +496,7 @@ func (_class PoolUpdateClass) GetByNameLabel(sessionID SessionRef, label string)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPoolUpdateRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPoolUpdateRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -516,7 +515,7 @@ func (_class PoolUpdateClass) GetByUUID(sessionID SessionRef, uuid string) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPoolUpdateRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPoolUpdateRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -535,6 +534,6 @@ func (_class PoolUpdateClass) GetRecord(sessionID SessionRef, self PoolUpdateRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPoolUpdateRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPoolUpdateRecordToGo(_method + " -> ", _result)
 	return
 }

@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -78,7 +77,7 @@ func (_class PGPUClass) GetAllRecords(sessionID SessionRef) (_retval map[PGPURef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPGPURefToPGPURecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPGPURefToPGPURecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -93,7 +92,7 @@ func (_class PGPUClass) GetAll(sessionID SessionRef) (_retval []PGPURef, _err er
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPGPURefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPGPURefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -112,7 +111,7 @@ func (_class PGPUClass) DisableDom0Access(sessionID SessionRef, self PGPURef) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumPgpuDom0AccessToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumPgpuDom0AccessToGo(_method + " -> ", _result)
 	return
 }
 
@@ -131,7 +130,7 @@ func (_class PGPUClass) EnableDom0Access(sessionID SessionRef, self PGPURef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumPgpuDom0AccessToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumPgpuDom0AccessToGo(_method + " -> ", _result)
 	return
 }
 
@@ -154,7 +153,7 @@ func (_class PGPUClass) GetRemainingCapacity(sessionID SessionRef, self PGPURef,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -310,7 +309,7 @@ func (_class PGPUClass) GetCompatibilityMetadata(sessionID SessionRef, self PGPU
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -329,7 +328,7 @@ func (_class PGPUClass) GetIsSystemDisplayDevice(sessionID SessionRef, self PGPU
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -348,7 +347,7 @@ func (_class PGPUClass) GetDom0Access(sessionID SessionRef, self PGPURef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumPgpuDom0AccessToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumPgpuDom0AccessToGo(_method + " -> ", _result)
 	return
 }
 
@@ -367,7 +366,7 @@ func (_class PGPUClass) GetSupportedVGPUMaxCapacities(sessionID SessionRef, self
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVGPUTypeRefToIntMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVGPUTypeRefToIntMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -386,7 +385,7 @@ func (_class PGPUClass) GetResidentVGPUs(sessionID SessionRef, self PGPURef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVGPURefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVGPURefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -405,7 +404,7 @@ func (_class PGPUClass) GetEnabledVGPUTypes(sessionID SessionRef, self PGPURef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVGPUTypeRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVGPUTypeRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -424,7 +423,7 @@ func (_class PGPUClass) GetSupportedVGPUTypes(sessionID SessionRef, self PGPURef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVGPUTypeRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVGPUTypeRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -443,7 +442,7 @@ func (_class PGPUClass) GetOtherConfig(sessionID SessionRef, self PGPURef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -462,7 +461,7 @@ func (_class PGPUClass) GetHost(sessionID SessionRef, self PGPURef) (_retval Hos
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -481,7 +480,7 @@ func (_class PGPUClass) GetGPUGroup(sessionID SessionRef, self PGPURef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertGPUGroupRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertGPUGroupRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -500,7 +499,7 @@ func (_class PGPUClass) GetPCI(sessionID SessionRef, self PGPURef) (_retval PCIR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPCIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPCIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -519,7 +518,7 @@ func (_class PGPUClass) GetUUID(sessionID SessionRef, self PGPURef) (_retval str
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -538,7 +537,7 @@ func (_class PGPUClass) GetByUUID(sessionID SessionRef, uuid string) (_retval PG
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPGPURefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPGPURefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -557,6 +556,6 @@ func (_class PGPUClass) GetRecord(sessionID SessionRef, self PGPURef) (_retval P
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPGPURecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPGPURecordToGo(_method + " -> ", _result)
 	return
 }

@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -49,7 +48,7 @@ func (_class CrashdumpClass) GetAllRecords(sessionID SessionRef) (_retval map[Cr
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertCrashdumpRefToCrashdumpRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertCrashdumpRefToCrashdumpRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -64,7 +63,7 @@ func (_class CrashdumpClass) GetAll(sessionID SessionRef) (_retval []CrashdumpRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertCrashdumpRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertCrashdumpRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -159,7 +158,7 @@ func (_class CrashdumpClass) GetOtherConfig(sessionID SessionRef, self Crashdump
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -178,7 +177,7 @@ func (_class CrashdumpClass) GetVDI(sessionID SessionRef, self CrashdumpRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -197,7 +196,7 @@ func (_class CrashdumpClass) GetVM(sessionID SessionRef, self CrashdumpRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -216,7 +215,7 @@ func (_class CrashdumpClass) GetUUID(sessionID SessionRef, self CrashdumpRef) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -235,7 +234,7 @@ func (_class CrashdumpClass) GetByUUID(sessionID SessionRef, uuid string) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertCrashdumpRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertCrashdumpRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -254,6 +253,6 @@ func (_class CrashdumpClass) GetRecord(sessionID SessionRef, self CrashdumpRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertCrashdumpRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertCrashdumpRecordToGo(_method + " -> ", _result)
 	return
 }

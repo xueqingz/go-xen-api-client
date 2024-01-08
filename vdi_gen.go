@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -180,7 +179,7 @@ func (_class VDIClass) GetAllRecords(sessionID SessionRef) (_retval map[VDIRef]V
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToVDIRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToVDIRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -195,7 +194,7 @@ func (_class VDIClass) GetAll(sessionID SessionRef) (_retval []VDIRef, _err erro
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -217,7 +216,7 @@ func (_class VDIClass) GetNbdInfo(sessionID SessionRef, self VDIRef) (_retval []
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVdiNbdServerInfoRecordSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVdiNbdServerInfoRecordSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -247,7 +246,7 @@ func (_class VDIClass) ListChangedBlocks(sessionID SessionRef, vdiFrom VDIRef, v
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -348,7 +347,7 @@ func (_class VDIClass) PoolMigrate(sessionID SessionRef, vdi VDIRef, sr SRRef, o
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -367,7 +366,7 @@ func (_class VDIClass) ReadDatabasePoolUUID(sessionID SessionRef, self VDIRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -386,7 +385,7 @@ func (_class VDIClass) OpenDatabase(sessionID SessionRef, self VDIRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSessionRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSessionRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -551,7 +550,7 @@ func (_class VDIClass) Copy(sessionID SessionRef, vdi VDIRef, sr SRRef, baseVdi 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -659,7 +658,7 @@ func (_class VDIClass) Introduce(sessionID SessionRef, uuid string, nameLabel st
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -720,7 +719,7 @@ func (_class VDIClass) Clone(sessionID SessionRef, vdi VDIRef, driverParams map[
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -743,7 +742,7 @@ func (_class VDIClass) Snapshot(sessionID SessionRef, vdi VDIRef, driverParams m
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1002,7 +1001,7 @@ func (_class VDIClass) GetCbtEnabled(sessionID SessionRef, self VDIRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1021,7 +1020,7 @@ func (_class VDIClass) GetIsToolsIso(sessionID SessionRef, self VDIRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1040,7 +1039,7 @@ func (_class VDIClass) GetMetadataLatest(sessionID SessionRef, self VDIRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1059,7 +1058,7 @@ func (_class VDIClass) GetMetadataOfPool(sessionID SessionRef, self VDIRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPoolRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPoolRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1078,7 +1077,7 @@ func (_class VDIClass) GetOnBoot(sessionID SessionRef, self VDIRef) (_retval OnB
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumOnBootToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumOnBootToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1097,7 +1096,7 @@ func (_class VDIClass) GetAllowCaching(sessionID SessionRef, self VDIRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1116,7 +1115,7 @@ func (_class VDIClass) GetTags(sessionID SessionRef, self VDIRef) (_retval []str
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1135,7 +1134,7 @@ func (_class VDIClass) GetSnapshotTime(sessionID SessionRef, self VDIRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTimeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTimeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1154,7 +1153,7 @@ func (_class VDIClass) GetSnapshots(sessionID SessionRef, self VDIRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1173,7 +1172,7 @@ func (_class VDIClass) GetSnapshotOf(sessionID SessionRef, self VDIRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1192,7 +1191,7 @@ func (_class VDIClass) GetIsASnapshot(sessionID SessionRef, self VDIRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1211,7 +1210,7 @@ func (_class VDIClass) GetSmConfig(sessionID SessionRef, self VDIRef) (_retval m
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1230,7 +1229,7 @@ func (_class VDIClass) GetXenstoreData(sessionID SessionRef, self VDIRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1249,7 +1248,7 @@ func (_class VDIClass) GetParent(sessionID SessionRef, self VDIRef) (_retval VDI
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1268,7 +1267,7 @@ func (_class VDIClass) GetMissing(sessionID SessionRef, self VDIRef) (_retval bo
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1287,7 +1286,7 @@ func (_class VDIClass) GetManaged(sessionID SessionRef, self VDIRef) (_retval bo
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1306,7 +1305,7 @@ func (_class VDIClass) GetLocation(sessionID SessionRef, self VDIRef) (_retval s
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1325,7 +1324,7 @@ func (_class VDIClass) GetStorageLock(sessionID SessionRef, self VDIRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1344,7 +1343,7 @@ func (_class VDIClass) GetOtherConfig(sessionID SessionRef, self VDIRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1363,7 +1362,7 @@ func (_class VDIClass) GetReadOnly(sessionID SessionRef, self VDIRef) (_retval b
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1382,7 +1381,7 @@ func (_class VDIClass) GetSharable(sessionID SessionRef, self VDIRef) (_retval b
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1401,7 +1400,7 @@ func (_class VDIClass) GetType(sessionID SessionRef, self VDIRef) (_retval VdiTy
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumVdiTypeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumVdiTypeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1420,7 +1419,7 @@ func (_class VDIClass) GetPhysicalUtilisation(sessionID SessionRef, self VDIRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1439,7 +1438,7 @@ func (_class VDIClass) GetVirtualSize(sessionID SessionRef, self VDIRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1458,7 +1457,7 @@ func (_class VDIClass) GetCrashDumps(sessionID SessionRef, self VDIRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertCrashdumpRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertCrashdumpRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1477,7 +1476,7 @@ func (_class VDIClass) GetVBDs(sessionID SessionRef, self VDIRef) (_retval []VBD
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVBDRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVBDRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1496,7 +1495,7 @@ func (_class VDIClass) GetSR(sessionID SessionRef, self VDIRef) (_retval SRRef, 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1515,7 +1514,7 @@ func (_class VDIClass) GetCurrentOperations(sessionID SessionRef, self VDIRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToEnumVdiOperationsMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToEnumVdiOperationsMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1534,7 +1533,7 @@ func (_class VDIClass) GetAllowedOperations(sessionID SessionRef, self VDIRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumVdiOperationsSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumVdiOperationsSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1553,7 +1552,7 @@ func (_class VDIClass) GetNameDescription(sessionID SessionRef, self VDIRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1572,7 +1571,7 @@ func (_class VDIClass) GetNameLabel(sessionID SessionRef, self VDIRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1591,7 +1590,7 @@ func (_class VDIClass) GetUUID(sessionID SessionRef, self VDIRef) (_retval strin
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1610,7 +1609,7 @@ func (_class VDIClass) GetByNameLabel(sessionID SessionRef, label string) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1644,7 +1643,7 @@ func (_class VDIClass) Create(sessionID SessionRef, args VDIRecord) (_retval VDI
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1663,7 +1662,7 @@ func (_class VDIClass) GetByUUID(sessionID SessionRef, uuid string) (_retval VDI
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1682,6 +1681,6 @@ func (_class VDIClass) GetRecord(sessionID SessionRef, self VDIRef) (_retval VDI
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRecordToGo(_method + " -> ", _result)
 	return
 }

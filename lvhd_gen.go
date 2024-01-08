@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -59,7 +58,7 @@ func (_class LVHDClass) EnableThinProvisioning(sessionID SessionRef, host HostRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -78,7 +77,7 @@ func (_class LVHDClass) GetUUID(sessionID SessionRef, self LVHDRef) (_retval str
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -97,7 +96,7 @@ func (_class LVHDClass) GetByUUID(sessionID SessionRef, uuid string) (_retval LV
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertLVHDRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertLVHDRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -116,6 +115,6 @@ func (_class LVHDClass) GetRecord(sessionID SessionRef, self LVHDRef) (_retval L
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertLVHDRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertLVHDRecordToGo(_method + " -> ", _result)
 	return
 }

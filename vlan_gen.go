@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -51,7 +50,7 @@ func (_class VLANClass) GetAllRecords(sessionID SessionRef) (_retval map[VLANRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVLANRefToVLANRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVLANRefToVLANRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -66,7 +65,7 @@ func (_class VLANClass) GetAll(sessionID SessionRef) (_retval []VLANRef, _err er
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVLANRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVLANRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -108,7 +107,7 @@ func (_class VLANClass) Create(sessionID SessionRef, taggedPIF PIFRef, tag int, 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVLANRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVLANRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -188,7 +187,7 @@ func (_class VLANClass) GetOtherConfig(sessionID SessionRef, self VLANRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -207,7 +206,7 @@ func (_class VLANClass) GetTag(sessionID SessionRef, self VLANRef) (_retval int,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -226,7 +225,7 @@ func (_class VLANClass) GetUntaggedPIF(sessionID SessionRef, self VLANRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPIFRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPIFRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -245,7 +244,7 @@ func (_class VLANClass) GetTaggedPIF(sessionID SessionRef, self VLANRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPIFRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPIFRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -264,7 +263,7 @@ func (_class VLANClass) GetUUID(sessionID SessionRef, self VLANRef) (_retval str
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -283,7 +282,7 @@ func (_class VLANClass) GetByUUID(sessionID SessionRef, uuid string) (_retval VL
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVLANRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVLANRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -302,6 +301,6 @@ func (_class VLANClass) GetRecord(sessionID SessionRef, self VLANRef) (_retval V
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVLANRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVLANRecordToGo(_method + " -> ", _result)
 	return
 }

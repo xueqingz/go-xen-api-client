@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -55,7 +54,7 @@ func (_class FeatureClass) GetAllRecords(sessionID SessionRef) (_retval map[Feat
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFeatureRefToFeatureRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFeatureRefToFeatureRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -70,7 +69,7 @@ func (_class FeatureClass) GetAll(sessionID SessionRef) (_retval []FeatureRef, _
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFeatureRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFeatureRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -89,7 +88,7 @@ func (_class FeatureClass) GetHost(sessionID SessionRef, self FeatureRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -108,7 +107,7 @@ func (_class FeatureClass) GetVersion(sessionID SessionRef, self FeatureRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -127,7 +126,7 @@ func (_class FeatureClass) GetExperimental(sessionID SessionRef, self FeatureRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -146,7 +145,7 @@ func (_class FeatureClass) GetEnabled(sessionID SessionRef, self FeatureRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -165,7 +164,7 @@ func (_class FeatureClass) GetNameDescription(sessionID SessionRef, self Feature
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -184,7 +183,7 @@ func (_class FeatureClass) GetNameLabel(sessionID SessionRef, self FeatureRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -203,7 +202,7 @@ func (_class FeatureClass) GetUUID(sessionID SessionRef, self FeatureRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -222,7 +221,7 @@ func (_class FeatureClass) GetByNameLabel(sessionID SessionRef, label string) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFeatureRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFeatureRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -241,7 +240,7 @@ func (_class FeatureClass) GetByUUID(sessionID SessionRef, uuid string) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFeatureRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFeatureRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -260,6 +259,6 @@ func (_class FeatureClass) GetRecord(sessionID SessionRef, self FeatureRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFeatureRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFeatureRecordToGo(_method + " -> ", _result)
 	return
 }

@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -66,7 +65,7 @@ func (_class VMApplianceClass) GetAllRecords(sessionID SessionRef) (_retval map[
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMApplianceRefToVMApplianceRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMApplianceRefToVMApplianceRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -81,7 +80,7 @@ func (_class VMApplianceClass) GetAll(sessionID SessionRef) (_retval []VMApplian
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMApplianceRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMApplianceRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -130,7 +129,7 @@ func (_class VMApplianceClass) GetSRsRequiredForRecovery(sessionID SessionRef, s
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -285,7 +284,7 @@ func (_class VMApplianceClass) GetVMs(sessionID SessionRef, self VMApplianceRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -304,7 +303,7 @@ func (_class VMApplianceClass) GetCurrentOperations(sessionID SessionRef, self V
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToEnumVMApplianceOperationMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToEnumVMApplianceOperationMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -323,7 +322,7 @@ func (_class VMApplianceClass) GetAllowedOperations(sessionID SessionRef, self V
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumVMApplianceOperationSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumVMApplianceOperationSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -342,7 +341,7 @@ func (_class VMApplianceClass) GetNameDescription(sessionID SessionRef, self VMA
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -361,7 +360,7 @@ func (_class VMApplianceClass) GetNameLabel(sessionID SessionRef, self VMApplian
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -380,7 +379,7 @@ func (_class VMApplianceClass) GetUUID(sessionID SessionRef, self VMApplianceRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -399,7 +398,7 @@ func (_class VMApplianceClass) GetByNameLabel(sessionID SessionRef, label string
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMApplianceRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMApplianceRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -433,7 +432,7 @@ func (_class VMApplianceClass) Create(sessionID SessionRef, args VMApplianceReco
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMApplianceRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMApplianceRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -452,7 +451,7 @@ func (_class VMApplianceClass) GetByUUID(sessionID SessionRef, uuid string) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMApplianceRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMApplianceRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -471,6 +470,6 @@ func (_class VMApplianceClass) GetRecord(sessionID SessionRef, self VMApplianceR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMApplianceRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMApplianceRecordToGo(_method + " -> ", _result)
 	return
 }

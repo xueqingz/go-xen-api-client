@@ -286,14 +286,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	{{ if .rpcPackage }}"{{ .rpcPackage }}"{{ end }}
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -353,18 +352,18 @@ func (_class {{ .Class.Name|exported }}Class) {{ .Message.Name|exported }}({{ ra
 	if _err != nil {
 		return
 	}
-	_retval, _err = {{ .Message.Result.Type|convertToGo }}(_method + " -> ", _result.Value){{ end }}
+	_retval, _err = {{ .Message.Result.Type|convertToGo }}(_method + " -> ", _result){{ end }}
 	return
 }
 `
 
 const clientStructTemplate string = `
 type Client struct {
-	rpc *xmlrpc.Client{{ range .Classes }}
+	rpc jsonrpc.RPCClient{{ range .Classes }}
 	{{ .Name|exported }} {{ .Name|exported }}Class{{ end }}
 }
 
-func prepClient(rpc *xmlrpc.Client) *Client {
+func prepClient(rpc jsonrpc.RPCClient) *Client {
 	var client Client
 	client.rpc = rpc{{ range .Classes }}
 	client.{{ .Name|exported }} = {{ .Name|exported }}Class{&client}{{ end }}
@@ -379,7 +378,7 @@ func {{ .FuncName }}(context string, input interface{}) (value {{ .GoType }}, er
 	}
 	value, ok := input.({{ .GoType }})
 	if !ok {
-		err = fmt.Errorf("Failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", {{ printf "%q" .GoType }}, context, reflect.TypeOf(input), input)
+		err = fmt.Errorf("failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", {{ printf "%q" .GoType }}, context, reflect.TypeOf(input), input)
 	}
 	return
 }
@@ -395,10 +394,17 @@ const convertIntToGoFuncTemplate string = `
 func {{ .FuncName }}(context string, input interface{}) (value int, err error) {
 	strValue, ok := input.(string)
 	if !ok {
-		err = fmt.Errorf("Failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", "string", context, reflect.TypeOf(input), input)
+		err = fmt.Errorf("failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", "string", context, reflect.TypeOf(input), input)
 	} else {
   	value, err = strconv.Atoi(strValue)
 	}
+	return
+}
+`
+const convertIntToGoFuncTemplate1 string = `
+func {{ .FuncName }}(context string, input interface{}) (value int, err error) {
+	strValue := fmt.Sprintf("%v", input)
+  	value, err = strconv.Atoi(strValue)
 	return
 }
 `
@@ -413,7 +419,7 @@ const convertRefTypeToGoFuncTemplate string = `
 func {{ .FuncName }}(context string, input interface{}) (ref {{ .GoType }}, err error) {
 	value, ok := input.(string)
 	if !ok {
-		err = fmt.Errorf("Failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", "string", context, reflect.TypeOf(input), input)
+		err = fmt.Errorf("failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", "string", context, reflect.TypeOf(input), input)
 	} else {
 		ref = {{ .GoType }}(value)
 	}
@@ -431,7 +437,7 @@ const convertSetTypeToGoFuncTemplate string = `
 func {{ .FuncName }}(context string, input interface{}) (slice {{ .GoType }}, err error) {
 	set, ok := input.([]interface{})
 	if !ok {
-		err = fmt.Errorf("Failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", "[]interface{}", context, reflect.TypeOf(input), input)
+		err = fmt.Errorf("failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", "[]interface{}", context, reflect.TypeOf(input), input)
 		return
 	}
 	slice = make({{ .GoType }}, len(set))
@@ -464,9 +470,9 @@ func {{ .FuncName }}(context string, slice {{ .GoType }}) (set []interface{}, er
 
 const convertRecordTypeToGoFuncTemplate string = `
 func {{ .FuncName }}(context string, input interface{}) (record {{ .GoType }}, err error) {
-	rpcStruct, ok := input.(xmlrpc.Struct)
+	rpcStruct, ok := input.(map[string]interface{})
 	if !ok {
-		err = fmt.Errorf("Failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", "xmlrpc.Struct", context, reflect.TypeOf(input), input)
+		err = fmt.Errorf("failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", "map[string]interface{}", context, reflect.TypeOf(input), input)
 		return
 	}{{ range .Fields }}
 	{{ .Name|internal }}Value, ok := rpcStruct[{{ printf "%q" .Name }}]
@@ -481,7 +487,7 @@ func {{ .FuncName }}(context string, input interface{}) (record {{ .GoType }}, e
 `
 
 const convertRecordTypeToXenFuncTemplate string = `
-func {{ .FuncName }}(context string, record {{ .GoType }}) (rpcStruct xmlrpc.Struct, err error) {{ "{\n  rpcStruct = xmlrpc.Struct{}" }}{{ range .Fields }}
+func {{ .FuncName }}(context string, record {{ .GoType }}) (rpcStruct map[string]interface{}, err error) {{ "{\n  rpcStruct = map[string]interface{}{}" }}{{ range .Fields }}
 	rpcStruct[{{ printf "%q" .Name }}], err = {{ .Type|convertToXen }}(fmt.Sprintf("%s.%s", context, {{ printf "%q" .Name }}), record.{{ .Name|exported }})
 	if err != nil {
 		return
@@ -499,9 +505,9 @@ func {{ .FuncName }}(context string, input interface{}) (recordInterface {{ .GoT
 
 const convertMapTypeToGoFuncTemplate string = `
 func {{ .FuncName }}(context string, input interface{}) (goMap {{ .GoType }}, err error) {
-	xenMap, ok := input.(xmlrpc.Struct)
+	xenMap, ok := input.(map[string]interface{})
 	if !ok {
-		err = fmt.Errorf("Failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", "xmlrpc.Struct", context, reflect.TypeOf(input), input)
+		err = fmt.Errorf("failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", "map[string]interface{}", context, reflect.TypeOf(input), input)
 		return
 	}
 	goMap = make({{ .GoType }}, len(xenMap))
@@ -522,8 +528,8 @@ func {{ .FuncName }}(context string, input interface{}) (goMap {{ .GoType }}, er
 `
 
 const convertMapTypeToXenFuncTemplate string = `
-func {{ .FuncName }}(context string, goMap {{.GoType }}) (xenMap xmlrpc.Struct, err error) {
-	xenMap = make(xmlrpc.Struct)
+func {{ .FuncName }}(context string, goMap {{.GoType }}) (xenMap map[string]interface{}, err error) {
+	xenMap = make(map[string]interface{})
 	for goKey, goValue := range goMap {
 		keyContext := fmt.Sprintf("%s[%s]", context, goKey)
 		xenKey, err := {{ .KeyConverter }}(keyContext, goKey)
@@ -550,7 +556,7 @@ func {{ .FuncName }}(context string, input interface{}) (value {{ .GoType }}, er
     case {{ printf "%q" .Name }}:
       value = {{ $.GoType }}{{ .Name|exported }}{{ end }}
     default:
-      err = fmt.Errorf("Unable to parse XenAPI response: got value %q for enum %s at %s, but this is not any of the known values", strValue, {{ printf "%q" .GoType }}, context)
+      err = fmt.Errorf("unable to parse XenAPI response: got value %q for enum %s at %s, but this is not any of the known values", strValue, {{ printf "%q" .GoType }}, context)
 	}
 	return
 }
@@ -564,9 +570,9 @@ func {{ .FuncName }}(context string, value {{ .GoType }}) (string, error) {
 
 const convertBatchTypeToGoFuncTemplate string = `
 func {{ .FuncName }}(context string, input interface{}) (batch {{ .GoType }}, err error) {
-	rpcStruct, ok := input.(xmlrpc.Struct)
+	rpcStruct, ok := input.(map[string]interface{})
 	if !ok {
-		err = fmt.Errorf("Failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", "xmlrpc.Struct", context, reflect.TypeOf(input), input)
+		err = fmt.Errorf("failed to parse XenAPI response: expected Go type %s at %s but got Go type %s with value %v", "map[string]interface{}", context, reflect.TypeOf(input), input)
 		return
 	}{{ range .BatchElements }}
 	{{ .Name|internal }}Value, ok := rpcStruct[{{ printf "%q" .Name }}]
@@ -642,7 +648,7 @@ func (generator *apiGenerator) prepTemplates() (err error) {
 		"ClientStruct":                       clientStructTemplate,
 		"convertSimpleTypeToGoFunc":          convertSimpleTypeToGoFuncTemplate,
 		"convertSimpleTypeToXenFunc":         convertSimpleTypeToXenFuncTemplate,
-		"convertIntToGoFunc":                 convertIntToGoFuncTemplate,
+		"convertIntToGoFunc":                 convertIntToGoFuncTemplate1,
 		"convertIntToXenFunc":                convertIntToXenFuncTemplate,
 		"convertRefTypeToGoFunc":             convertRefTypeToGoFuncTemplate,
 		"convertRefTypeToXenFunc":            convertRefTypeToXenFuncTemplate,
@@ -733,7 +739,7 @@ func (generator *apiGenerator) buildRecordConverterFunc(xenType string, directio
 		}
 	}
 	if len(fields) == 0 {
-		return "", fmt.Errorf("Unable to find definition for XenAPI %s", xenType)
+		return "", fmt.Errorf("unable to find definition for XenAPI %s", xenType)
 	}
 
 	args := map[string]interface{}{
@@ -802,7 +808,7 @@ classLoop:
 		}
 	}
 	if len(values) == 0 {
-		return "", fmt.Errorf("Unable to find definition for XenAPI %s", xenType)
+		return "", fmt.Errorf("unable to find definition for XenAPI %s", xenType)
 	}
 
 	args := map[string]interface{}{
@@ -876,7 +882,7 @@ func (generator *apiGenerator) buildConverterFunc(xenType string, direction stri
 	} else if match := reXenBatchType.FindStringSubmatch(xenType); match != nil {
 		funcDefinition, err = generator.buildBatchConverterFunc(xenType, direction, funcName)
 	} else {
-		err = fmt.Errorf("Unable to build type conversion function for XenAPI: unsupported type %q", xenType)
+		err = fmt.Errorf("unable to build type conversion function for XenAPI: unsupported type %q", xenType)
 	}
 	if err != nil {
 		return
@@ -1007,7 +1013,9 @@ func (generator *apiGenerator) generateClient() (err error) {
 
 	defer fileHandle.Close()
 
-	err = generator.templates.ExecuteTemplate(fileHandle, "FileHeader", nil)
+	err = generator.templates.ExecuteTemplate(fileHandle, "FileHeader", map[string]interface{}{
+		"rpcPackage": "github.com/ybbus/jsonrpc/v3",
+	})
 	if err != nil {
 		return
 	}

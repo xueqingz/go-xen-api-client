@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -80,7 +79,7 @@ func (_class ClusterClass) GetAllRecords(sessionID SessionRef) (_retval map[Clus
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertClusterRefToClusterRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertClusterRefToClusterRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -95,7 +94,7 @@ func (_class ClusterClass) GetAll(sessionID SessionRef) (_retval []ClusterRef, _
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertClusterRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertClusterRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -179,7 +178,7 @@ func (_class ClusterClass) PoolCreate(sessionID SessionRef, network NetworkRef, 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertClusterRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertClusterRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -198,7 +197,7 @@ func (_class ClusterClass) GetNetwork(sessionID SessionRef, self ClusterRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertNetworkRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertNetworkRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -258,7 +257,7 @@ func (_class ClusterClass) Create(sessionID SessionRef, pif PIFRef, clusterStack
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertClusterRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertClusterRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -338,7 +337,7 @@ func (_class ClusterClass) GetOtherConfig(sessionID SessionRef, self ClusterRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -357,7 +356,7 @@ func (_class ClusterClass) GetClusterConfig(sessionID SessionRef, self ClusterRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -376,7 +375,7 @@ func (_class ClusterClass) GetTokenTimeoutCoefficient(sessionID SessionRef, self
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFloatToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFloatToGo(_method + " -> ", _result)
 	return
 }
 
@@ -395,7 +394,7 @@ func (_class ClusterClass) GetTokenTimeout(sessionID SessionRef, self ClusterRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFloatToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFloatToGo(_method + " -> ", _result)
 	return
 }
 
@@ -414,7 +413,7 @@ func (_class ClusterClass) GetPoolAutoJoin(sessionID SessionRef, self ClusterRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -433,7 +432,7 @@ func (_class ClusterClass) GetCurrentOperations(sessionID SessionRef, self Clust
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToEnumClusterOperationMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToEnumClusterOperationMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -452,7 +451,7 @@ func (_class ClusterClass) GetAllowedOperations(sessionID SessionRef, self Clust
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumClusterOperationSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumClusterOperationSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -471,7 +470,7 @@ func (_class ClusterClass) GetClusterStack(sessionID SessionRef, self ClusterRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -490,7 +489,7 @@ func (_class ClusterClass) GetClusterToken(sessionID SessionRef, self ClusterRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -509,7 +508,7 @@ func (_class ClusterClass) GetPendingForget(sessionID SessionRef, self ClusterRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -528,7 +527,7 @@ func (_class ClusterClass) GetClusterHosts(sessionID SessionRef, self ClusterRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertClusterHostRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertClusterHostRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -547,7 +546,7 @@ func (_class ClusterClass) GetUUID(sessionID SessionRef, self ClusterRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -566,7 +565,7 @@ func (_class ClusterClass) GetByUUID(sessionID SessionRef, uuid string) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertClusterRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertClusterRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -585,6 +584,6 @@ func (_class ClusterClass) GetRecord(sessionID SessionRef, self ClusterRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertClusterRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertClusterRecordToGo(_method + " -> ", _result)
 	return
 }

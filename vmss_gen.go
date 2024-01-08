@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -83,7 +82,7 @@ func (_class VMSSClass) GetAllRecords(sessionID SessionRef) (_retval map[VMSSRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMSSRefToVMSSRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMSSRefToVMSSRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -98,7 +97,7 @@ func (_class VMSSClass) GetAll(sessionID SessionRef) (_retval []VMSSRef, _err er
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMSSRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMSSRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -254,7 +253,7 @@ func (_class VMSSClass) SnapshotNow(sessionID SessionRef, vmss VMSSRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -330,7 +329,7 @@ func (_class VMSSClass) GetVMs(sessionID SessionRef, self VMSSRef) (_retval []VM
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -349,7 +348,7 @@ func (_class VMSSClass) GetLastRunTime(sessionID SessionRef, self VMSSRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTimeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTimeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -368,7 +367,7 @@ func (_class VMSSClass) GetSchedule(sessionID SessionRef, self VMSSRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -387,7 +386,7 @@ func (_class VMSSClass) GetFrequency(sessionID SessionRef, self VMSSRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumVmssFrequencyToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumVmssFrequencyToGo(_method + " -> ", _result)
 	return
 }
 
@@ -406,7 +405,7 @@ func (_class VMSSClass) GetRetainedSnapshots(sessionID SessionRef, self VMSSRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -425,7 +424,7 @@ func (_class VMSSClass) GetType(sessionID SessionRef, self VMSSRef) (_retval Vms
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumVmssTypeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumVmssTypeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -444,7 +443,7 @@ func (_class VMSSClass) GetEnabled(sessionID SessionRef, self VMSSRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -463,7 +462,7 @@ func (_class VMSSClass) GetNameDescription(sessionID SessionRef, self VMSSRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -482,7 +481,7 @@ func (_class VMSSClass) GetNameLabel(sessionID SessionRef, self VMSSRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -501,7 +500,7 @@ func (_class VMSSClass) GetUUID(sessionID SessionRef, self VMSSRef) (_retval str
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -520,7 +519,7 @@ func (_class VMSSClass) GetByNameLabel(sessionID SessionRef, label string) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMSSRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMSSRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -554,7 +553,7 @@ func (_class VMSSClass) Create(sessionID SessionRef, args VMSSRecord) (_retval V
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMSSRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMSSRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -573,7 +572,7 @@ func (_class VMSSClass) GetByUUID(sessionID SessionRef, uuid string) (_retval VM
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMSSRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMSSRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -592,6 +591,6 @@ func (_class VMSSClass) GetRecord(sessionID SessionRef, self VMSSRef) (_retval V
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMSSRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMSSRecordToGo(_method + " -> ", _result)
 	return
 }

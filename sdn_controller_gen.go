@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -58,7 +57,7 @@ func (_class SDNControllerClass) GetAllRecords(sessionID SessionRef) (_retval ma
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSDNControllerRefToSDNControllerRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSDNControllerRefToSDNControllerRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -73,7 +72,7 @@ func (_class SDNControllerClass) GetAll(sessionID SessionRef) (_retval []SDNCont
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSDNControllerRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSDNControllerRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -115,7 +114,7 @@ func (_class SDNControllerClass) Introduce(sessionID SessionRef, protocol SdnCon
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSDNControllerRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSDNControllerRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -134,7 +133,7 @@ func (_class SDNControllerClass) GetPort(sessionID SessionRef, self SDNControlle
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -153,7 +152,7 @@ func (_class SDNControllerClass) GetAddress(sessionID SessionRef, self SDNContro
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -172,7 +171,7 @@ func (_class SDNControllerClass) GetProtocol(sessionID SessionRef, self SDNContr
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumSdnControllerProtocolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumSdnControllerProtocolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -191,7 +190,7 @@ func (_class SDNControllerClass) GetUUID(sessionID SessionRef, self SDNControlle
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -210,7 +209,7 @@ func (_class SDNControllerClass) GetByUUID(sessionID SessionRef, uuid string) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSDNControllerRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSDNControllerRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -229,6 +228,6 @@ func (_class SDNControllerClass) GetRecord(sessionID SessionRef, self SDNControl
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSDNControllerRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSDNControllerRecordToGo(_method + " -> ", _result)
 	return
 }

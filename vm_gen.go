@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -400,7 +399,7 @@ func (_class VMClass) GetAllRecords(sessionID SessionRef) (_retval map[VMRef]VMR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToVMRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToVMRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -415,7 +414,7 @@ func (_class VMClass) GetAll(sessionID SessionRef) (_retval []VMRef, _err error)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -503,7 +502,7 @@ func (_class VMClass) Import(sessionID SessionRef, url string, sr SRRef, fullRes
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -553,7 +552,7 @@ func (_class VMClass) CallPlugin(sessionID SessionRef, vm VMRef, plugin string, 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -572,7 +571,7 @@ func (_class VMClass) QueryServices(sessionID SessionRef, self VMRef) (_retval m
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -668,7 +667,7 @@ func (_class VMClass) GetSRsRequiredForRecovery(sessionID SessionRef, self VMRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -866,7 +865,7 @@ func (_class VMClass) RetrieveWlbRecommendations(sessionID SessionRef, vm VMRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefToStringSetMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefToStringSetMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -912,7 +911,7 @@ func (_class VMClass) CreateNewBlob(sessionID SessionRef, vm VMRef, name string,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBlobRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBlobRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -971,7 +970,7 @@ func (_class VMClass) GetPossibleHosts(sessionID SessionRef, vm VMRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -990,7 +989,7 @@ func (_class VMClass) GetAllowedVIFDevices(sessionID SessionRef, vm VMRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1009,7 +1008,7 @@ func (_class VMClass) GetAllowedVBDDevices(sessionID SessionRef, vm VMRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1085,7 +1084,7 @@ func (_class VMClass) QueryDataSource(sessionID SessionRef, self VMRef, dataSour
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFloatToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFloatToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1123,7 +1122,7 @@ func (_class VMClass) GetDataSources(sessionID SessionRef, self VMRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertDataSourceRecordSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertDataSourceRecordSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1142,7 +1141,7 @@ func (_class VMClass) GetBootRecord(sessionID SessionRef, self VMRef) (_retval V
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRecordToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1231,7 +1230,7 @@ func (_class VMClass) MigrateSend(sessionID SessionRef, vm VMRef, dest map[strin
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1258,7 +1257,7 @@ func (_class VMClass) MaximiseMemory(sessionID SessionRef, self VMRef, total int
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1397,7 +1396,7 @@ func (_class VMClass) GetCooperative(sessionID SessionRef, self VMRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -1625,7 +1624,7 @@ func (_class VMClass) ComputeMemoryOverhead(sessionID SessionRef, vm VMRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2162,7 +2161,7 @@ func (_class VMClass) Checkpoint(sessionID SessionRef, vm VMRef, newName string)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2216,7 +2215,7 @@ func (_class VMClass) Copy(sessionID SessionRef, vm VMRef, newName string, sr SR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2245,7 +2244,7 @@ func (_class VMClass) Clone(sessionID SessionRef, vm VMRef, newName string) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2277,7 +2276,7 @@ func (_class VMClass) SnapshotWithQuiesce(sessionID SessionRef, vm VMRef, newNam
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -2309,7 +2308,7 @@ func (_class VMClass) Snapshot(sessionID SessionRef, vm VMRef, newName string, i
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3093,7 +3092,7 @@ func (_class VMClass) GetPendingGuidances(sessionID SessionRef, self VMRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumUpdateGuidancesSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumUpdateGuidancesSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3112,7 +3111,7 @@ func (_class VMClass) GetNVRAM(sessionID SessionRef, self VMRef) (_retval map[st
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3131,7 +3130,7 @@ func (_class VMClass) GetDomainType(sessionID SessionRef, self VMRef) (_retval D
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumDomainTypeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumDomainTypeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3150,7 +3149,7 @@ func (_class VMClass) GetReferenceLabel(sessionID SessionRef, self VMRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3169,7 +3168,7 @@ func (_class VMClass) GetRequiresReboot(sessionID SessionRef, self VMRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3188,7 +3187,7 @@ func (_class VMClass) GetHasVendorDevice(sessionID SessionRef, self VMRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3207,7 +3206,7 @@ func (_class VMClass) GetHardwarePlatformVersion(sessionID SessionRef, self VMRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3226,7 +3225,7 @@ func (_class VMClass) GetGenerationID(sessionID SessionRef, self VMRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3245,7 +3244,7 @@ func (_class VMClass) GetVersion(sessionID SessionRef, self VMRef) (_retval int,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3264,7 +3263,7 @@ func (_class VMClass) GetSuspendSR(sessionID SessionRef, self VMRef) (_retval SR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3283,7 +3282,7 @@ func (_class VMClass) GetAttachedPCIs(sessionID SessionRef, self VMRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPCIRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPCIRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3302,7 +3301,7 @@ func (_class VMClass) GetVGPUs(sessionID SessionRef, self VMRef) (_retval []VGPU
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVGPURefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVGPURefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3321,7 +3320,7 @@ func (_class VMClass) GetOrder(sessionID SessionRef, self VMRef) (_retval int, _
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3340,7 +3339,7 @@ func (_class VMClass) GetShutdownDelay(sessionID SessionRef, self VMRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3359,7 +3358,7 @@ func (_class VMClass) GetStartDelay(sessionID SessionRef, self VMRef) (_retval i
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3378,7 +3377,7 @@ func (_class VMClass) GetAppliance(sessionID SessionRef, self VMRef) (_retval VM
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMApplianceRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMApplianceRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3397,7 +3396,7 @@ func (_class VMClass) GetIsVmssSnapshot(sessionID SessionRef, self VMRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3416,7 +3415,7 @@ func (_class VMClass) GetSnapshotSchedule(sessionID SessionRef, self VMRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMSSRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMSSRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3435,7 +3434,7 @@ func (_class VMClass) GetIsSnapshotFromVmpp(sessionID SessionRef, self VMRef) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3454,7 +3453,7 @@ func (_class VMClass) GetProtectionPolicy(sessionID SessionRef, self VMRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMPPRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMPPRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3473,7 +3472,7 @@ func (_class VMClass) GetBiosStrings(sessionID SessionRef, self VMRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3492,7 +3491,7 @@ func (_class VMClass) GetChildren(sessionID SessionRef, self VMRef) (_retval []V
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3511,7 +3510,7 @@ func (_class VMClass) GetParent(sessionID SessionRef, self VMRef) (_retval VMRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3530,7 +3529,7 @@ func (_class VMClass) GetSnapshotMetadata(sessionID SessionRef, self VMRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3549,7 +3548,7 @@ func (_class VMClass) GetSnapshotInfo(sessionID SessionRef, self VMRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3568,7 +3567,7 @@ func (_class VMClass) GetBlockedOperations(sessionID SessionRef, self VMRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumVMOperationsToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumVMOperationsToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3587,7 +3586,7 @@ func (_class VMClass) GetTags(sessionID SessionRef, self VMRef) (_retval []strin
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3606,7 +3605,7 @@ func (_class VMClass) GetBlobs(sessionID SessionRef, self VMRef) (_retval map[st
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToBlobRefMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToBlobRefMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3625,7 +3624,7 @@ func (_class VMClass) GetTransportableSnapshotID(sessionID SessionRef, self VMRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3644,7 +3643,7 @@ func (_class VMClass) GetSnapshotTime(sessionID SessionRef, self VMRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTimeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTimeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3663,7 +3662,7 @@ func (_class VMClass) GetSnapshots(sessionID SessionRef, self VMRef) (_retval []
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3682,7 +3681,7 @@ func (_class VMClass) GetSnapshotOf(sessionID SessionRef, self VMRef) (_retval V
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3701,7 +3700,7 @@ func (_class VMClass) GetIsASnapshot(sessionID SessionRef, self VMRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3720,7 +3719,7 @@ func (_class VMClass) GetHaRestartPriority(sessionID SessionRef, self VMRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3739,7 +3738,7 @@ func (_class VMClass) GetHaAlwaysRun(sessionID SessionRef, self VMRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3758,7 +3757,7 @@ func (_class VMClass) GetXenstoreData(sessionID SessionRef, self VMRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3777,7 +3776,7 @@ func (_class VMClass) GetRecommendations(sessionID SessionRef, self VMRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3796,7 +3795,7 @@ func (_class VMClass) GetLastBootedRecord(sessionID SessionRef, self VMRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3815,7 +3814,7 @@ func (_class VMClass) GetGuestMetrics(sessionID SessionRef, self VMRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMGuestMetricsRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMGuestMetricsRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3834,7 +3833,7 @@ func (_class VMClass) GetMetrics(sessionID SessionRef, self VMRef) (_retval VMMe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMMetricsRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMMetricsRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3853,7 +3852,7 @@ func (_class VMClass) GetIsControlDomain(sessionID SessionRef, self VMRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3872,7 +3871,7 @@ func (_class VMClass) GetLastBootCPUFlags(sessionID SessionRef, self VMRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3891,7 +3890,7 @@ func (_class VMClass) GetDomarch(sessionID SessionRef, self VMRef) (_retval stri
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3910,7 +3909,7 @@ func (_class VMClass) GetDomid(sessionID SessionRef, self VMRef) (_retval int, _
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3929,7 +3928,7 @@ func (_class VMClass) GetOtherConfig(sessionID SessionRef, self VMRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3948,7 +3947,7 @@ func (_class VMClass) GetPCIBus(sessionID SessionRef, self VMRef) (_retval strin
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3967,7 +3966,7 @@ func (_class VMClass) GetPlatform(sessionID SessionRef, self VMRef) (_retval map
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -3986,7 +3985,7 @@ func (_class VMClass) GetHVMShadowMultiplier(sessionID SessionRef, self VMRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFloatToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFloatToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4005,7 +4004,7 @@ func (_class VMClass) GetHVMBootParams(sessionID SessionRef, self VMRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4024,7 +4023,7 @@ func (_class VMClass) GetHVMBootPolicy(sessionID SessionRef, self VMRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4043,7 +4042,7 @@ func (_class VMClass) GetPVLegacyArgs(sessionID SessionRef, self VMRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4062,7 +4061,7 @@ func (_class VMClass) GetPVBootloaderArgs(sessionID SessionRef, self VMRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4081,7 +4080,7 @@ func (_class VMClass) GetPVArgs(sessionID SessionRef, self VMRef) (_retval strin
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4100,7 +4099,7 @@ func (_class VMClass) GetPVRamdisk(sessionID SessionRef, self VMRef) (_retval st
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4119,7 +4118,7 @@ func (_class VMClass) GetPVKernel(sessionID SessionRef, self VMRef) (_retval str
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4138,7 +4137,7 @@ func (_class VMClass) GetPVBootloader(sessionID SessionRef, self VMRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4157,7 +4156,7 @@ func (_class VMClass) GetVTPMs(sessionID SessionRef, self VMRef) (_retval []VTPM
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVTPMRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVTPMRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4176,7 +4175,7 @@ func (_class VMClass) GetCrashDumps(sessionID SessionRef, self VMRef) (_retval [
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertCrashdumpRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertCrashdumpRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4195,7 +4194,7 @@ func (_class VMClass) GetVUSBs(sessionID SessionRef, self VMRef) (_retval []VUSB
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVUSBRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVUSBRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4214,7 +4213,7 @@ func (_class VMClass) GetVBDs(sessionID SessionRef, self VMRef) (_retval []VBDRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVBDRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVBDRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4233,7 +4232,7 @@ func (_class VMClass) GetVIFs(sessionID SessionRef, self VMRef) (_retval []VIFRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVIFRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVIFRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4252,7 +4251,7 @@ func (_class VMClass) GetConsoles(sessionID SessionRef, self VMRef) (_retval []C
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertConsoleRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertConsoleRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4271,7 +4270,7 @@ func (_class VMClass) GetActionsAfterCrash(sessionID SessionRef, self VMRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumOnCrashBehaviourToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumOnCrashBehaviourToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4290,7 +4289,7 @@ func (_class VMClass) GetActionsAfterReboot(sessionID SessionRef, self VMRef) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumOnNormalExitToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumOnNormalExitToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4309,7 +4308,7 @@ func (_class VMClass) GetActionsAfterShutdown(sessionID SessionRef, self VMRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumOnNormalExitToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumOnNormalExitToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4328,7 +4327,7 @@ func (_class VMClass) GetActionsAfterSoftreboot(sessionID SessionRef, self VMRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumOnSoftrebootBehaviorToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumOnSoftrebootBehaviorToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4347,7 +4346,7 @@ func (_class VMClass) GetVCPUsAtStartup(sessionID SessionRef, self VMRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4366,7 +4365,7 @@ func (_class VMClass) GetVCPUsMax(sessionID SessionRef, self VMRef) (_retval int
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4385,7 +4384,7 @@ func (_class VMClass) GetVCPUsParams(sessionID SessionRef, self VMRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4404,7 +4403,7 @@ func (_class VMClass) GetMemoryStaticMin(sessionID SessionRef, self VMRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4423,7 +4422,7 @@ func (_class VMClass) GetMemoryDynamicMin(sessionID SessionRef, self VMRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4442,7 +4441,7 @@ func (_class VMClass) GetMemoryDynamicMax(sessionID SessionRef, self VMRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4461,7 +4460,7 @@ func (_class VMClass) GetMemoryStaticMax(sessionID SessionRef, self VMRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4480,7 +4479,7 @@ func (_class VMClass) GetMemoryTarget(sessionID SessionRef, self VMRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4499,7 +4498,7 @@ func (_class VMClass) GetMemoryOverhead(sessionID SessionRef, self VMRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4518,7 +4517,7 @@ func (_class VMClass) GetAffinity(sessionID SessionRef, self VMRef) (_retval Hos
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4537,7 +4536,7 @@ func (_class VMClass) GetScheduledToBeResidentOn(sessionID SessionRef, self VMRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4556,7 +4555,7 @@ func (_class VMClass) GetResidentOn(sessionID SessionRef, self VMRef) (_retval H
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4575,7 +4574,7 @@ func (_class VMClass) GetSuspendVDI(sessionID SessionRef, self VMRef) (_retval V
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVDIRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVDIRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4594,7 +4593,7 @@ func (_class VMClass) GetIsDefaultTemplate(sessionID SessionRef, self VMRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4613,7 +4612,7 @@ func (_class VMClass) GetIsATemplate(sessionID SessionRef, self VMRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4632,7 +4631,7 @@ func (_class VMClass) GetUserVersion(sessionID SessionRef, self VMRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4651,7 +4650,7 @@ func (_class VMClass) GetPowerState(sessionID SessionRef, self VMRef) (_retval V
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumVMPowerStateToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumVMPowerStateToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4670,7 +4669,7 @@ func (_class VMClass) GetNameDescription(sessionID SessionRef, self VMRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4689,7 +4688,7 @@ func (_class VMClass) GetNameLabel(sessionID SessionRef, self VMRef) (_retval st
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4708,7 +4707,7 @@ func (_class VMClass) GetCurrentOperations(sessionID SessionRef, self VMRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToEnumVMOperationsMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToEnumVMOperationsMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4727,7 +4726,7 @@ func (_class VMClass) GetAllowedOperations(sessionID SessionRef, self VMRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumVMOperationsSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumVMOperationsSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4746,7 +4745,7 @@ func (_class VMClass) GetUUID(sessionID SessionRef, self VMRef) (_retval string,
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4765,7 +4764,7 @@ func (_class VMClass) GetByNameLabel(sessionID SessionRef, label string) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4799,7 +4798,7 @@ func (_class VMClass) Create(sessionID SessionRef, args VMRecord) (_retval VMRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4818,7 +4817,7 @@ func (_class VMClass) GetByUUID(sessionID SessionRef, uuid string) (_retval VMRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -4837,6 +4836,6 @@ func (_class VMClass) GetRecord(sessionID SessionRef, self VMRef) (_retval VMRec
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRecordToGo(_method + " -> ", _result)
 	return
 }

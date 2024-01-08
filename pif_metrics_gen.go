@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -67,7 +66,7 @@ func (_class PIFMetricsClass) GetAllRecords(sessionID SessionRef) (_retval map[P
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPIFMetricsRefToPIFMetricsRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPIFMetricsRefToPIFMetricsRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -82,7 +81,7 @@ func (_class PIFMetricsClass) GetAll(sessionID SessionRef) (_retval []PIFMetrics
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPIFMetricsRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPIFMetricsRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -162,7 +161,7 @@ func (_class PIFMetricsClass) GetOtherConfig(sessionID SessionRef, self PIFMetri
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -181,7 +180,7 @@ func (_class PIFMetricsClass) GetLastUpdated(sessionID SessionRef, self PIFMetri
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTimeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTimeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -200,7 +199,7 @@ func (_class PIFMetricsClass) GetPciBusPath(sessionID SessionRef, self PIFMetric
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -219,7 +218,7 @@ func (_class PIFMetricsClass) GetDuplex(sessionID SessionRef, self PIFMetricsRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -238,7 +237,7 @@ func (_class PIFMetricsClass) GetSpeed(sessionID SessionRef, self PIFMetricsRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -257,7 +256,7 @@ func (_class PIFMetricsClass) GetDeviceName(sessionID SessionRef, self PIFMetric
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -276,7 +275,7 @@ func (_class PIFMetricsClass) GetDeviceID(sessionID SessionRef, self PIFMetricsR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -295,7 +294,7 @@ func (_class PIFMetricsClass) GetVendorName(sessionID SessionRef, self PIFMetric
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -314,7 +313,7 @@ func (_class PIFMetricsClass) GetVendorID(sessionID SessionRef, self PIFMetricsR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -333,7 +332,7 @@ func (_class PIFMetricsClass) GetCarrier(sessionID SessionRef, self PIFMetricsRe
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -352,7 +351,7 @@ func (_class PIFMetricsClass) GetIoWriteKbs(sessionID SessionRef, self PIFMetric
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFloatToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFloatToGo(_method + " -> ", _result)
 	return
 }
 
@@ -371,7 +370,7 @@ func (_class PIFMetricsClass) GetIoReadKbs(sessionID SessionRef, self PIFMetrics
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFloatToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFloatToGo(_method + " -> ", _result)
 	return
 }
 
@@ -390,7 +389,7 @@ func (_class PIFMetricsClass) GetUUID(sessionID SessionRef, self PIFMetricsRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -409,7 +408,7 @@ func (_class PIFMetricsClass) GetByUUID(sessionID SessionRef, uuid string) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPIFMetricsRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPIFMetricsRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -428,6 +427,6 @@ func (_class PIFMetricsClass) GetRecord(sessionID SessionRef, self PIFMetricsRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPIFMetricsRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPIFMetricsRecordToGo(_method + " -> ", _result)
 	return
 }

@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -88,7 +87,7 @@ func (_class SessionClass) GetAllSubjectIdentifiers(sessionID SessionRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -118,7 +117,7 @@ func (_class SessionClass) CreateFromDbFile(sessionID SessionRef, filename strin
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSessionRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSessionRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -137,7 +136,7 @@ func (_class SessionClass) SlaveLocalLoginWithPassword(uname string, pwd string)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSessionRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSessionRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -198,7 +197,7 @@ func (_class SessionClass) LoginWithPassword(uname string, pwd string, version s
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSessionRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSessionRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -278,7 +277,7 @@ func (_class SessionClass) GetClientCertificate(sessionID SessionRef, self Sessi
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -297,7 +296,7 @@ func (_class SessionClass) GetOriginator(sessionID SessionRef, self SessionRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -316,7 +315,7 @@ func (_class SessionClass) GetParent(sessionID SessionRef, self SessionRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSessionRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSessionRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -335,7 +334,7 @@ func (_class SessionClass) GetTasks(sessionID SessionRef, self SessionRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTaskRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTaskRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -354,7 +353,7 @@ func (_class SessionClass) GetRbacPermissions(sessionID SessionRef, self Session
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -373,7 +372,7 @@ func (_class SessionClass) GetAuthUserName(sessionID SessionRef, self SessionRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -392,7 +391,7 @@ func (_class SessionClass) GetAuthUserSid(sessionID SessionRef, self SessionRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -411,7 +410,7 @@ func (_class SessionClass) GetValidationTime(sessionID SessionRef, self SessionR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTimeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTimeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -430,7 +429,7 @@ func (_class SessionClass) GetSubject(sessionID SessionRef, self SessionRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSubjectRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSubjectRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -449,7 +448,7 @@ func (_class SessionClass) GetIsLocalSuperuser(sessionID SessionRef, self Sessio
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -468,7 +467,7 @@ func (_class SessionClass) GetOtherConfig(sessionID SessionRef, self SessionRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -487,7 +486,7 @@ func (_class SessionClass) GetPool(sessionID SessionRef, self SessionRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -506,7 +505,7 @@ func (_class SessionClass) GetLastActive(sessionID SessionRef, self SessionRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTimeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTimeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -525,7 +524,7 @@ func (_class SessionClass) GetThisUser(sessionID SessionRef, self SessionRef) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertUserRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertUserRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -544,7 +543,7 @@ func (_class SessionClass) GetThisHost(sessionID SessionRef, self SessionRef) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -563,7 +562,7 @@ func (_class SessionClass) GetUUID(sessionID SessionRef, self SessionRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -582,7 +581,7 @@ func (_class SessionClass) GetByUUID(sessionID SessionRef, uuid string) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSessionRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSessionRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -601,6 +600,6 @@ func (_class SessionClass) GetRecord(sessionID SessionRef, self SessionRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSessionRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSessionRecordToGo(_method + " -> ", _result)
 	return
 }

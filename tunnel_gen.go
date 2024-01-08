@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -62,7 +61,7 @@ func (_class TunnelClass) GetAllRecords(sessionID SessionRef) (_retval map[Tunne
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTunnelRefToTunnelRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTunnelRefToTunnelRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -77,7 +76,7 @@ func (_class TunnelClass) GetAll(sessionID SessionRef) (_retval []TunnelRef, _er
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTunnelRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTunnelRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -124,7 +123,7 @@ func (_class TunnelClass) Create(sessionID SessionRef, transportPIF PIFRef, netw
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTunnelRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTunnelRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -284,7 +283,7 @@ func (_class TunnelClass) GetProtocol(sessionID SessionRef, self TunnelRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumTunnelProtocolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumTunnelProtocolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -303,7 +302,7 @@ func (_class TunnelClass) GetOtherConfig(sessionID SessionRef, self TunnelRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -322,7 +321,7 @@ func (_class TunnelClass) GetStatus(sessionID SessionRef, self TunnelRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -341,7 +340,7 @@ func (_class TunnelClass) GetTransportPIF(sessionID SessionRef, self TunnelRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPIFRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPIFRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -360,7 +359,7 @@ func (_class TunnelClass) GetAccessPIF(sessionID SessionRef, self TunnelRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPIFRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPIFRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -379,7 +378,7 @@ func (_class TunnelClass) GetUUID(sessionID SessionRef, self TunnelRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -398,7 +397,7 @@ func (_class TunnelClass) GetByUUID(sessionID SessionRef, uuid string) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTunnelRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTunnelRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -417,6 +416,6 @@ func (_class TunnelClass) GetRecord(sessionID SessionRef, self TunnelRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTunnelRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTunnelRecordToGo(_method + " -> ", _result)
 	return
 }

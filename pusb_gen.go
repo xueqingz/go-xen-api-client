@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -69,7 +68,7 @@ func (_class PUSBClass) GetAllRecords(sessionID SessionRef) (_retval map[PUSBRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPUSBRefToPUSBRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPUSBRefToPUSBRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -84,7 +83,7 @@ func (_class PUSBClass) GetAll(sessionID SessionRef) (_retval []PUSBRef, _err er
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPUSBRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPUSBRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -198,7 +197,7 @@ func (_class PUSBClass) GetSpeed(sessionID SessionRef, self PUSBRef) (_retval fl
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFloatToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFloatToGo(_method + " -> ", _result)
 	return
 }
 
@@ -217,7 +216,7 @@ func (_class PUSBClass) GetOtherConfig(sessionID SessionRef, self PUSBRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -236,7 +235,7 @@ func (_class PUSBClass) GetPassthroughEnabled(sessionID SessionRef, self PUSBRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -255,7 +254,7 @@ func (_class PUSBClass) GetDescription(sessionID SessionRef, self PUSBRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -274,7 +273,7 @@ func (_class PUSBClass) GetVersion(sessionID SessionRef, self PUSBRef) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -293,7 +292,7 @@ func (_class PUSBClass) GetSerial(sessionID SessionRef, self PUSBRef) (_retval s
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -312,7 +311,7 @@ func (_class PUSBClass) GetProductDesc(sessionID SessionRef, self PUSBRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -331,7 +330,7 @@ func (_class PUSBClass) GetProductID(sessionID SessionRef, self PUSBRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -350,7 +349,7 @@ func (_class PUSBClass) GetVendorDesc(sessionID SessionRef, self PUSBRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -369,7 +368,7 @@ func (_class PUSBClass) GetVendorID(sessionID SessionRef, self PUSBRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -388,7 +387,7 @@ func (_class PUSBClass) GetPath(sessionID SessionRef, self PUSBRef) (_retval str
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -407,7 +406,7 @@ func (_class PUSBClass) GetHost(sessionID SessionRef, self PUSBRef) (_retval Hos
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -426,7 +425,7 @@ func (_class PUSBClass) GetUSBGroup(sessionID SessionRef, self PUSBRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertUSBGroupRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertUSBGroupRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -445,7 +444,7 @@ func (_class PUSBClass) GetUUID(sessionID SessionRef, self PUSBRef) (_retval str
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -464,7 +463,7 @@ func (_class PUSBClass) GetByUUID(sessionID SessionRef, uuid string) (_retval PU
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPUSBRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPUSBRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -483,6 +482,6 @@ func (_class PUSBClass) GetRecord(sessionID SessionRef, self PUSBRef) (_retval P
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPUSBRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPUSBRecordToGo(_method + " -> ", _result)
 	return
 }

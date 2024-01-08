@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -51,7 +50,7 @@ func (_class VIFMetricsClass) GetAllRecords(sessionID SessionRef) (_retval map[V
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVIFMetricsRefToVIFMetricsRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVIFMetricsRefToVIFMetricsRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -66,7 +65,7 @@ func (_class VIFMetricsClass) GetAll(sessionID SessionRef) (_retval []VIFMetrics
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVIFMetricsRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVIFMetricsRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -146,7 +145,7 @@ func (_class VIFMetricsClass) GetOtherConfig(sessionID SessionRef, self VIFMetri
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -165,7 +164,7 @@ func (_class VIFMetricsClass) GetLastUpdated(sessionID SessionRef, self VIFMetri
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTimeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTimeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -184,7 +183,7 @@ func (_class VIFMetricsClass) GetIoWriteKbs(sessionID SessionRef, self VIFMetric
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFloatToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFloatToGo(_method + " -> ", _result)
 	return
 }
 
@@ -203,7 +202,7 @@ func (_class VIFMetricsClass) GetIoReadKbs(sessionID SessionRef, self VIFMetrics
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertFloatToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertFloatToGo(_method + " -> ", _result)
 	return
 }
 
@@ -222,7 +221,7 @@ func (_class VIFMetricsClass) GetUUID(sessionID SessionRef, self VIFMetricsRef) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -241,7 +240,7 @@ func (_class VIFMetricsClass) GetByUUID(sessionID SessionRef, uuid string) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVIFMetricsRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVIFMetricsRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -260,6 +259,6 @@ func (_class VIFMetricsClass) GetRecord(sessionID SessionRef, self VIFMetricsRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVIFMetricsRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVIFMetricsRecordToGo(_method + " -> ", _result)
 	return
 }

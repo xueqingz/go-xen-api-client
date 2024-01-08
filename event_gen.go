@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -76,7 +75,7 @@ func (_class EventClass) Inject(sessionID SessionRef, class string, ref string) 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -91,7 +90,7 @@ func (_class EventClass) GetCurrentID(sessionID SessionRef) (_retval int, _err e
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -128,7 +127,7 @@ func (_class EventClass) From(sessionID SessionRef, classes []string, token stri
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEventBatchToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEventBatchToGo(_method + " -> ", _result)
 	return
 }
 
@@ -147,7 +146,7 @@ func (_class EventClass) Next(sessionID SessionRef) (_retval []EventRecord, _err
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEventRecordSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEventRecordSetToGo(_method + " -> ", _result)
 	return
 }
 

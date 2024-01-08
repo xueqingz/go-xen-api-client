@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -64,7 +63,7 @@ func (_class NetworkSriovClass) GetAllRecords(sessionID SessionRef) (_retval map
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertNetworkSriovRefToNetworkSriovRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertNetworkSriovRefToNetworkSriovRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -79,7 +78,7 @@ func (_class NetworkSriovClass) GetAll(sessionID SessionRef) (_retval []NetworkS
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertNetworkSriovRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertNetworkSriovRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -98,7 +97,7 @@ func (_class NetworkSriovClass) GetRemainingCapacity(sessionID SessionRef, self 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -136,7 +135,7 @@ func (_class NetworkSriovClass) Create(sessionID SessionRef, pif PIFRef, network
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertNetworkSriovRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertNetworkSriovRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -155,7 +154,7 @@ func (_class NetworkSriovClass) GetConfigurationMode(sessionID SessionRef, self 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumSriovConfigurationModeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumSriovConfigurationModeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -174,7 +173,7 @@ func (_class NetworkSriovClass) GetRequiresReboot(sessionID SessionRef, self Net
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -193,7 +192,7 @@ func (_class NetworkSriovClass) GetLogicalPIF(sessionID SessionRef, self Network
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPIFRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPIFRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -212,7 +211,7 @@ func (_class NetworkSriovClass) GetPhysicalPIF(sessionID SessionRef, self Networ
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPIFRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPIFRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -231,7 +230,7 @@ func (_class NetworkSriovClass) GetUUID(sessionID SessionRef, self NetworkSriovR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -250,7 +249,7 @@ func (_class NetworkSriovClass) GetByUUID(sessionID SessionRef, uuid string) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertNetworkSriovRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertNetworkSriovRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -269,6 +268,6 @@ func (_class NetworkSriovClass) GetRecord(sessionID SessionRef, self NetworkSrio
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertNetworkSriovRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertNetworkSriovRecordToGo(_method + " -> ", _result)
 	return
 }

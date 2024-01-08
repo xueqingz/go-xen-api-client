@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -45,7 +44,7 @@ func (_class DRTaskClass) GetAllRecords(sessionID SessionRef) (_retval map[DRTas
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertDRTaskRefToDRTaskRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertDRTaskRefToDRTaskRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -60,7 +59,7 @@ func (_class DRTaskClass) GetAll(sessionID SessionRef) (_retval []DRTaskRef, _er
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertDRTaskRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertDRTaskRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -102,7 +101,7 @@ func (_class DRTaskClass) Create(sessionID SessionRef, atype string, deviceConfi
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertDRTaskRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertDRTaskRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -121,7 +120,7 @@ func (_class DRTaskClass) GetIntroducedSRs(sessionID SessionRef, self DRTaskRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -140,7 +139,7 @@ func (_class DRTaskClass) GetUUID(sessionID SessionRef, self DRTaskRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -159,7 +158,7 @@ func (_class DRTaskClass) GetByUUID(sessionID SessionRef, uuid string) (_retval 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertDRTaskRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertDRTaskRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -178,6 +177,6 @@ func (_class DRTaskClass) GetRecord(sessionID SessionRef, self DRTaskRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertDRTaskRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertDRTaskRecordToGo(_method + " -> ", _result)
 	return
 }

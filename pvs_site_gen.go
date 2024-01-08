@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -55,7 +54,7 @@ func (_class PVSSiteClass) GetAllRecords(sessionID SessionRef) (_retval map[PVSS
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSSiteRefToPVSSiteRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSSiteRefToPVSSiteRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -70,7 +69,7 @@ func (_class PVSSiteClass) GetAll(sessionID SessionRef) (_retval []PVSSiteRef, _
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSSiteRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSSiteRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -135,7 +134,7 @@ func (_class PVSSiteClass) Introduce(sessionID SessionRef, nameLabel string, nam
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSSiteRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSSiteRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -192,7 +191,7 @@ func (_class PVSSiteClass) GetProxies(sessionID SessionRef, self PVSSiteRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSProxyRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSProxyRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -211,7 +210,7 @@ func (_class PVSSiteClass) GetServers(sessionID SessionRef, self PVSSiteRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSServerRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSServerRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -230,7 +229,7 @@ func (_class PVSSiteClass) GetCacheStorage(sessionID SessionRef, self PVSSiteRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSCacheStorageRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSCacheStorageRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -249,7 +248,7 @@ func (_class PVSSiteClass) GetPVSUUID(sessionID SessionRef, self PVSSiteRef) (_r
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -268,7 +267,7 @@ func (_class PVSSiteClass) GetNameDescription(sessionID SessionRef, self PVSSite
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -287,7 +286,7 @@ func (_class PVSSiteClass) GetNameLabel(sessionID SessionRef, self PVSSiteRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -306,7 +305,7 @@ func (_class PVSSiteClass) GetUUID(sessionID SessionRef, self PVSSiteRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -325,7 +324,7 @@ func (_class PVSSiteClass) GetByNameLabel(sessionID SessionRef, label string) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSSiteRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSSiteRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -344,7 +343,7 @@ func (_class PVSSiteClass) GetByUUID(sessionID SessionRef, uuid string) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSSiteRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSSiteRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -363,6 +362,6 @@ func (_class PVSSiteClass) GetRecord(sessionID SessionRef, self PVSSiteRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPVSSiteRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPVSSiteRecordToGo(_method + " -> ", _result)
 	return
 }

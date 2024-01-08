@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -62,7 +61,7 @@ func (_class ConsoleClass) GetAllRecords(sessionID SessionRef) (_retval map[Cons
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertConsoleRefToConsoleRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertConsoleRefToConsoleRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -77,7 +76,7 @@ func (_class ConsoleClass) GetAll(sessionID SessionRef) (_retval []ConsoleRef, _
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertConsoleRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertConsoleRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -157,7 +156,7 @@ func (_class ConsoleClass) GetOtherConfig(sessionID SessionRef, self ConsoleRef)
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -176,7 +175,7 @@ func (_class ConsoleClass) GetVM(sessionID SessionRef, self ConsoleRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertVMRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertVMRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -195,7 +194,7 @@ func (_class ConsoleClass) GetLocation(sessionID SessionRef, self ConsoleRef) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -214,7 +213,7 @@ func (_class ConsoleClass) GetProtocol(sessionID SessionRef, self ConsoleRef) (_
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertEnumConsoleProtocolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertEnumConsoleProtocolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -233,7 +232,7 @@ func (_class ConsoleClass) GetUUID(sessionID SessionRef, self ConsoleRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -267,7 +266,7 @@ func (_class ConsoleClass) Create(sessionID SessionRef, args ConsoleRecord) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertConsoleRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertConsoleRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -286,7 +285,7 @@ func (_class ConsoleClass) GetByUUID(sessionID SessionRef, uuid string) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertConsoleRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertConsoleRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -305,6 +304,6 @@ func (_class ConsoleClass) GetRecord(sessionID SessionRef, self ConsoleRef) (_re
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertConsoleRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertConsoleRecordToGo(_method + " -> ", _result)
 	return
 }

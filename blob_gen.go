@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -55,7 +54,7 @@ func (_class BlobClass) GetAllRecords(sessionID SessionRef) (_retval map[BlobRef
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBlobRefToBlobRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBlobRefToBlobRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -70,7 +69,7 @@ func (_class BlobClass) GetAll(sessionID SessionRef) (_retval []BlobRef, _err er
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBlobRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBlobRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -108,7 +107,7 @@ func (_class BlobClass) Create(sessionID SessionRef, mimeType string, public boo
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBlobRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBlobRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -184,7 +183,7 @@ func (_class BlobClass) GetMimeType(sessionID SessionRef, self BlobRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -203,7 +202,7 @@ func (_class BlobClass) GetLastUpdated(sessionID SessionRef, self BlobRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertTimeToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertTimeToGo(_method + " -> ", _result)
 	return
 }
 
@@ -222,7 +221,7 @@ func (_class BlobClass) GetPublic(sessionID SessionRef, self BlobRef) (_retval b
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -241,7 +240,7 @@ func (_class BlobClass) GetSize(sessionID SessionRef, self BlobRef) (_retval int
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertIntToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertIntToGo(_method + " -> ", _result)
 	return
 }
 
@@ -260,7 +259,7 @@ func (_class BlobClass) GetNameDescription(sessionID SessionRef, self BlobRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -279,7 +278,7 @@ func (_class BlobClass) GetNameLabel(sessionID SessionRef, self BlobRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -298,7 +297,7 @@ func (_class BlobClass) GetUUID(sessionID SessionRef, self BlobRef) (_retval str
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -317,7 +316,7 @@ func (_class BlobClass) GetByNameLabel(sessionID SessionRef, label string) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBlobRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBlobRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -336,7 +335,7 @@ func (_class BlobClass) GetByUUID(sessionID SessionRef, uuid string) (_retval Bl
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBlobRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBlobRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -355,6 +354,6 @@ func (_class BlobClass) GetRecord(sessionID SessionRef, self BlobRef) (_retval B
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBlobRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBlobRecordToGo(_method + " -> ", _result)
 	return
 }

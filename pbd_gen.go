@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -53,7 +52,7 @@ func (_class PBDClass) GetAllRecords(sessionID SessionRef) (_retval map[PBDRef]P
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPBDRefToPBDRecordMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPBDRefToPBDRecordMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -68,7 +67,7 @@ func (_class PBDClass) GetAll(sessionID SessionRef) (_retval []PBDRef, _err erro
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPBDRefSetToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPBDRefSetToGo(_method + " -> ", _result)
 	return
 }
 
@@ -200,7 +199,7 @@ func (_class PBDClass) GetOtherConfig(sessionID SessionRef, self PBDRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -219,7 +218,7 @@ func (_class PBDClass) GetCurrentlyAttached(sessionID SessionRef, self PBDRef) (
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertBoolToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertBoolToGo(_method + " -> ", _result)
 	return
 }
 
@@ -238,7 +237,7 @@ func (_class PBDClass) GetDeviceConfig(sessionID SessionRef, self PBDRef) (_retv
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -257,7 +256,7 @@ func (_class PBDClass) GetSR(sessionID SessionRef, self PBDRef) (_retval SRRef, 
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertSRRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertSRRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -276,7 +275,7 @@ func (_class PBDClass) GetHost(sessionID SessionRef, self PBDRef) (_retval HostR
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertHostRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertHostRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -295,7 +294,7 @@ func (_class PBDClass) GetUUID(sessionID SessionRef, self PBDRef) (_retval strin
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -329,7 +328,7 @@ func (_class PBDClass) Create(sessionID SessionRef, args PBDRecord) (_retval PBD
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPBDRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPBDRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -348,7 +347,7 @@ func (_class PBDClass) GetByUUID(sessionID SessionRef, uuid string) (_retval PBD
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPBDRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPBDRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -367,6 +366,6 @@ func (_class PBDClass) GetRecord(sessionID SessionRef, self PBDRef) (_retval PBD
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertPBDRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertPBDRecordToGo(_method + " -> ", _result)
 	return
 }

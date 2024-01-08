@@ -8,14 +8,13 @@ package xenapi
 
 import (
 	"fmt"
-	"github.com/amfranz/go-xmlrpc-client"
 	"reflect"
 	"strconv"
+	
 	"time"
 )
 
 var _ = fmt.Errorf
-var _ = xmlrpc.NewClient
 var _ = reflect.TypeOf
 var _ = strconv.Atoi
 var _ = time.UTC
@@ -133,7 +132,7 @@ func (_class UserClass) GetOtherConfig(sessionID SessionRef, self UserRef) (_ret
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToStringMapToGo(_method + " -> ", _result)
 	return
 }
 
@@ -152,7 +151,7 @@ func (_class UserClass) GetFullname(sessionID SessionRef, self UserRef) (_retval
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -171,7 +170,7 @@ func (_class UserClass) GetShortName(sessionID SessionRef, self UserRef) (_retva
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -190,7 +189,7 @@ func (_class UserClass) GetUUID(sessionID SessionRef, self UserRef) (_retval str
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertStringToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertStringToGo(_method + " -> ", _result)
 	return
 }
 
@@ -224,7 +223,7 @@ func (_class UserClass) Create(sessionID SessionRef, args UserRecord) (_retval U
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertUserRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertUserRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -243,7 +242,7 @@ func (_class UserClass) GetByUUID(sessionID SessionRef, uuid string) (_retval Us
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertUserRefToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertUserRefToGo(_method + " -> ", _result)
 	return
 }
 
@@ -262,6 +261,6 @@ func (_class UserClass) GetRecord(sessionID SessionRef, self UserRef) (_retval U
 	if _err != nil {
 		return
 	}
-	_retval, _err = convertUserRecordToGo(_method + " -> ", _result.Value)
+	_retval, _err = convertUserRecordToGo(_method + " -> ", _result)
 	return
 }
