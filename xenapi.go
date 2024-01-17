@@ -288,7 +288,6 @@ import (
 	"fmt"
 	"reflect"
 	"strconv"
-	{{ if .rpcPackage }}"{{ .rpcPackage }}"{{ end }}
 	"time"
 )
 
@@ -359,11 +358,11 @@ func (_class {{ .Class.Name|exported }}Class) {{ .Message.Name|exported }}({{ ra
 
 const clientStructTemplate string = `
 type Client struct {
-	rpc jsonrpc.RPCClient{{ range .Classes }}
+	rpc *JsonRpcClient{{ range .Classes }}
 	{{ .Name|exported }} {{ .Name|exported }}Class{{ end }}
 }
 
-func prepClient(rpc jsonrpc.RPCClient) *Client {
+func prepClient(rpc *JsonRpcClient) *Client {
 	var client Client
 	client.rpc = rpc{{ range .Classes }}
 	client.{{ .Name|exported }} = {{ .Name|exported }}Class{&client}{{ end }}
@@ -1013,9 +1012,7 @@ func (generator *apiGenerator) generateClient() (err error) {
 
 	defer fileHandle.Close()
 
-	err = generator.templates.ExecuteTemplate(fileHandle, "FileHeader", map[string]interface{}{
-		"rpcPackage": "github.com/ybbus/jsonrpc/v3",
-	})
+	err = generator.templates.ExecuteTemplate(fileHandle, "FileHeader", nil)
 	if err != nil {
 		return
 	}
@@ -1081,6 +1078,30 @@ func (generator *apiGenerator) run() (err error) {
 	}
 
 	err = generator.generateClient()
+	// for _, class := range generator.classes {
+	// 	fmt.Println(class.Name)
+	// 	fmt.Println(class.Description)
+	// 	for _, f := range class.Fields {
+	// 		fmt.Println(f.Name)
+	// 		fmt.Println(f.Type)
+	// 	}
+	// 	for _, m := range class.Messages {
+	// 		fmt.Println(m.Name)
+	// 		for _, p := range m.Params {
+	// 			fmt.Println(p.Name)
+	// 			fmt.Println(p.Type)
+	// 		}
+	// 		fmt.Println(m.Result)
+	// 	}
+	// 	for _, e := range class.Enums {
+	// 		fmt.Println(e.Name)
+	// 		for _, v := range e.Values {
+	// 			fmt.Println(v.Name)
+	// 			fmt.Println(v.Doc)
+	// 		}
+	// 	}
+	// }
+
 	return
 }
 

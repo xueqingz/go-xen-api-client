@@ -10,7 +10,6 @@ import (
 	"fmt"
 	"reflect"
 	"strconv"
-	"github.com/ybbus/jsonrpc/v3"
 	"time"
 )
 
@@ -20,7 +19,7 @@ var _ = strconv.Atoi
 var _ = time.UTC
 
 type Client struct {
-	rpc jsonrpc.RPCClient
+	rpc *JsonRpcClient
 	Session SessionClass
 	Auth AuthClass
 	Subject SubjectClass
@@ -90,7 +89,7 @@ type Client struct {
 	Observer ObserverClass
 }
 
-func prepClient(rpc jsonrpc.RPCClient) *Client {
+func prepClient(rpc *JsonRpcClient) *Client {
 	var client Client
 	client.rpc = rpc
 	client.Session = SessionClass{&client}
