@@ -3,6 +3,7 @@ package xenapi
 import (
 	"bytes"
 	"context"
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -144,9 +145,23 @@ func (client *JsonRpcClient) Call(ctx context.Context, method string, params ...
 }
 
 func NewJsonRPCClient(endpoint string) *JsonRpcClient {
+	// conifg tls
+	tlsConfig := &tls.Config{
+		MinVersion:         tls.VersionTLS12,
+		InsecureSkipVerify: false,
+	}
+	transport := &http.Transport{
+		TLSClientConfig: tlsConfig,
+	}
+	httpClient := &http.Client{}
+	if strings.HasPrefix(endpoint, "https://") {
+		httpClient.Transport = transport
+	}
+
+	// set up jsonrpc client
 	client := &JsonRpcClient{
 		endpoint:   endpoint,
-		httpClient: &http.Client{},
+		httpClient: httpClient,
 	}
 
 	return client
