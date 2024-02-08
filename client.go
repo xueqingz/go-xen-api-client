@@ -3,7 +3,6 @@ package xenapi
 import (
 	"context"
 	"fmt"
-	"strconv"
 )
 
 func (client *Client) APICall(method string, params ...interface{}) (result interface{}, err error) {
@@ -12,15 +11,21 @@ func (client *Client) APICall(method string, params ...interface{}) (result inte
 
 	response, err := client.rpc.Call(context.Background(), method, params...)
 	if err != nil {
-		fmt.Println("\nhttp error:")
 		fmt.Println(err.Error())
 		return
 	}
+	// fmt.Println("\nresponse:")
+	// fmt.Println(response.Result)
+	// fmt.Println(response.Error)
 
 	if response.Error != nil {
 		fmt.Println("Continue response.Error:")
-		fmt.Println(response.Error)
-		err = fmt.Errorf("Error code: " + strconv.Itoa(response.Error.Code) + ", message: " + response.Error.Message)
+		errString := fmt.Sprintf("API Error: code %d, message %s", response.Error.Code, response.Error.Message)
+		if response.Error.Data != nil {
+			errString = errString + fmt.Sprintf(", data %v", response.Error.Data)
+		}
+		err = fmt.Errorf(errString)
+		fmt.Println(err.Error())
 		return
 	}
 	// fmt.Println("The response result is:")
@@ -30,9 +35,8 @@ func (client *Client) APICall(method string, params ...interface{}) (result inte
 	return
 }
 
-func NewClient(url string) (*Client, error) {
-	rpc := NewJsonRPCClient(fmt.Sprintf("%s%s", url, "/jsonrpc"))
+func NewClient(opts *ClientOpts) (*Client, error) {
+	rpc := NewJsonRPCClient(opts)
 
 	return prepClient(rpc), nil
-
 }

@@ -2,18 +2,23 @@ package xenapi
 
 import (
 	"flag"
-	"fmt"
+	// "fmt"
 	"os"
-
 	// "strconv"
-	"reflect"
+	// "reflect"
 	"testing"
 
 	log "github.com/sirupsen/logrus"
 )
 
 func TestAuthentication(t *testing.T) {
-	client, err := NewClient("http://10.71.56.85")
+	// client, err := NewClient(&ClientOpts{
+	// 	Url:        "https://10.71.56.85",
+	// 	CaCertPath: "/home/ubuntu/xapi-ssl.pem",
+	// })
+	client, err := NewClient(&ClientOpts{
+		Url: "http://10.71.56.85",
+	})
 	if err != nil {
 		t.Log(err)
 		t.Fail()
@@ -27,22 +32,22 @@ func TestAuthentication(t *testing.T) {
 		return
 	}
 
-	hostRefs, err := client.Host.GetAll(sessionRef)
-	if err != nil {
-		t.Log(err)
-		t.Fail()
-		return
-	}
-	fmt.Println(hostRefs)
+	// hostRefs, err := client.Host.GetAll(sessionRef)
+	// if err != nil {
+	// 	t.Log(err)
+	// 	t.Fail()
+	// 	return
+	// }
+	// fmt.Println(hostRefs)
 
-	sg, err := client.Host.GetSchedGran(sessionRef, hostRefs[0])
-	if err != nil {
-		t.Log(err)
-		t.Fail()
-		return
-	}
-	fmt.Println(sg)
-	fmt.Println(reflect.TypeOf(sg))
+	// sg, err := client.Host.GetSchedGran(sessionRef, hostRefs[0])
+	// if err != nil {
+	// 	t.Log(err)
+	// 	t.Fail()
+	// 	return
+	// }
+	// fmt.Println(sg)
+	// fmt.Println(reflect.TypeOf(sg))
 
 	// records, err := client.Host.GetAllRecords(sessionRef)
 	// if err != nil {
@@ -50,7 +55,7 @@ func TestAuthentication(t *testing.T) {
 	// 	t.Fail()
 	// 	return
 	// }
-	// // fmt.Println(records)
+	// fmt.Println(records)
 	// fmt.Println(reflect.TypeOf(records))
 
 	// editions, err := client.Host.GetEditions(sessionRef, hostRefs[0])

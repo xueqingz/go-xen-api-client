@@ -4,12 +4,16 @@ import (
 	"bytes"
 	"context"
 	"crypto/tls"
+	"crypto/x509"
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
+	"os"
 	"reflect"
 	"strings"
+	"time"
 )
 
 type Request struct {
@@ -105,7 +109,7 @@ func (client *JsonRpcClient) Call(ctx context.Context, method string, params ...
 
 	httpRequest, err := client.newRequest(ctx, request)
 	if err != nil {
-		return nil, fmt.Errorf("rpc call %v() on %v: %w", request.Method, client.endpoint, err)
+		return nil, fmt.Errorf("Could not create request for %v() : %w", request.Method, err)
 	}
 
 	httpResponse, err := client.httpClient.Do(httpRequest)
@@ -113,7 +117,7 @@ func (client *JsonRpcClient) Call(ctx context.Context, method string, params ...
 	fmt.Println(httpResponse)
 
 	if err != nil {
-		return nil, fmt.Errorf("rpc call %v() on %v: %w", request.Method, httpRequest.URL.Redacted(), err)
+		return nil, fmt.Errorf("Call %v() on %v. Error making http request: %w", request.Method, httpRequest.URL.Redacted(), err)
 	}
 	defer httpResponse.Body.Close()
 
@@ -125,42 +129,56 @@ func (client *JsonRpcClient) Call(ctx context.Context, method string, params ...
 
 	body, err := io.ReadAll(httpResponse.Body)
 	if err != nil {
-		return nil, fmt.Errorf("rpc call %v() on %v status code: %v. could not read from response body: %w", request.Method, httpRequest.URL.Redacted(), httpResponse.StatusCode, err)
+		return nil, fmt.Errorf("Call %v() on %v status code: %v. Could not read response body: %w", request.Method, httpRequest.URL.Redacted(), httpResponse.StatusCode, err)
 	}
 	body = ConvertJsonValueWhenNaNOrInf(body)
 	err = json.Unmarshal(body, &rpcResponse)
 	// parsing error
 	if err != nil && err != io.EOF {
-		fmt.Printf("error decoding sakura response: %v", err)
+		// fmt.Printf("error decoding sakura response: %v", err)
 		// fmt.Printf("sakura response: %q", body)
-		return nil, fmt.Errorf("rpc call %v() on %v status code: %v. could not decode body to rpc response: %w", request.Method, httpRequest.URL.Redacted(), httpResponse.StatusCode, err)
+		return nil, fmt.Errorf("Call %v() on %v status code: %v. Could not decode response body: %w", request.Method, httpRequest.URL.Redacted(), httpResponse.StatusCode, err)
 	}
 
 	// response body empty
 	if rpcResponse == nil {
-		return nil, fmt.Errorf("rpc call %v() on %v status code: %v. rpc response missing", request.Method, httpRequest.URL.Redacted(), httpResponse.StatusCode)
+		return nil, fmt.Errorf("Call %v() on %v status code: %v. Response missing", request.Method, httpRequest.URL.Redacted(), httpResponse.StatusCode)
 	}
 
 	return rpcResponse, nil
 }
 
-func NewJsonRPCClient(endpoint string) *JsonRpcClient {
-	// conifg tls
-	tlsConfig := &tls.Config{
-		MinVersion:         tls.VersionTLS12,
-		InsecureSkipVerify: false,
-	}
-	transport := &http.Transport{
-		TLSClientConfig: tlsConfig,
-	}
+type ClientOpts struct {
+	Url        string
+	CaCertPath string
+}
+
+func NewJsonRPCClient(opts *ClientOpts) *JsonRpcClient {
 	httpClient := &http.Client{}
-	if strings.HasPrefix(endpoint, "https://") {
+	if strings.HasPrefix(opts.Url, "https://") {
+		caCertPool := x509.NewCertPool()
+		if opts.CaCertPath != "" {
+			caCert, err := os.ReadFile(opts.CaCertPath)
+			if err != nil {
+				log.Fatal(err)
+			}
+			caCertPool.AppendCertsFromPEM(caCert)
+		}
+		tlsConfig := &tls.Config{
+			MinVersion:         tls.VersionTLS12,
+			InsecureSkipVerify: false,
+			RootCAs:            caCertPool,
+		}
+		transport := &http.Transport{
+			TLSClientConfig: tlsConfig,
+			IdleConnTimeout: 30 * time.Second,
+		}
 		httpClient.Transport = transport
 	}
 
 	// set up jsonrpc client
 	client := &JsonRpcClient{
-		endpoint:   endpoint,
+		endpoint:   fmt.Sprintf("%s%s", opts.Url, "/jsonrpc"),
 		httpClient: httpClient,
 	}
 

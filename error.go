@@ -1,8 +1,8 @@
 package xenapi
 
-import (
-	"fmt"
-)
+// import (
+// 	"fmt"
+// )
 
 const (
 	ERR_MESSAGE_DEPRECATED = "MESSAGE_DEPRECATED"
@@ -488,30 +488,3 @@ const (
 
 	ERR_VM_CALL_PLUGIN_RATE_LIMIT = "VM_CALL_PLUGIN_RATE_LIMIT"
 )
-
-// Error represents errors returned on xmlrpc request.
-type Error struct {
-	code    string
-	objtype string
-	uuid    string
-}
-
-// Error() method implements Error interface
-func (e *Error) Error() string {
-	return fmt.Sprintf("API Error: %s %s %s", e.code, e.objtype, e.uuid)
-}
-
-// Code ...
-func (e *Error) Code() string {
-	return e.code
-}
-
-// Type ...
-func (e *Error) Type() string {
-	return e.objtype
-}
-
-// UUID ...
-func (e *Error) UUID() string {
-	return e.uuid
-}
